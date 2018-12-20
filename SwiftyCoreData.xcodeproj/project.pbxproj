@@ -59,8 +59,8 @@
 				FF4B4B2421CB8E5D00CECDB8 /* SwiftyCoreData.h */,
 				FF4B4B2521CB8E5D00CECDB8 /* Info.plist */,
 				FF4B4B2C21CB8E7600CECDB8 /* SCDWorker.swift */,
-				FF4B4B2F21CB933800CECDB8 /* SCDManagedObjectConvertible.swift */,
 				FF4B4B3121CB935F00CECDB8 /* SCDPersistanceService.swift */,
+				FF4B4B2F21CB933800CECDB8 /* SCDManagedObjectConvertible.swift */,
 				FF4B4B3321CB938500CECDB8 /* SCDObjectConvertible.swift */,
 			);
 			path = SwiftyCoreData;

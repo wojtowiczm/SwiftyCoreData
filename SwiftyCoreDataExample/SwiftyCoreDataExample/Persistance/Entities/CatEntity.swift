@@ -30,7 +30,9 @@ extension CatEntity: SCDObjectConvertible {
     public func toObject() -> Cat? {
         guard let name = name else { return nil }
         
-        return Cat(name: name, weight: weight, age: Int(age))
+        return Cat(name: name, weight: weight, age: Int(age), managedObjectID: objectID)
     }
 }
+
+
 

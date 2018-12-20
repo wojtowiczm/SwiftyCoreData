@@ -13,6 +13,9 @@ public struct Cat {
     let name: String
     let weight: Double
     let age: Int
+    
+    var managedObjectID: NSManagedObjectID?
+    
 }
 
 extension Cat: SCDManagedObjectConvertible {
