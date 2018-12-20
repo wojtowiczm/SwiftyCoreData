@@ -18,7 +18,7 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible, 
     }
     
     
-    func fetchAllObjects(completion: @escaping (([Object]?) -> Void)) {
+    public func fetchAllObjects(completion: @escaping (([Object]?) -> Void)) {
         persistanceService.context.perform {
             guard let fetchRequest = ManagedObject.fetchRequest() as? NSFetchRequest<ManagedObject> else {
                 completion(nil)
@@ -34,7 +34,7 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible, 
         }
     }
     
-    func fetchObject(with id: NSManagedObjectID, completion: ((Object?) -> Void)) {
+    public func fetchObject(with id: NSManagedObjectID, completion: ((Object?) -> Void)) {
         do {
             let result = try persistanceService.context.existingObject(with: id) as! ManagedObject
             if let object = result.toObject() as? Object {
@@ -46,7 +46,7 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible, 
         }
     }
     
-    func deleteObjects() {
+    public func deleteObjects() {
         guard let fetchRequest: NSFetchRequest<ManagedObject> = ManagedObject.fetchRequest() as? NSFetchRequest<ManagedObject> else { return }
         do {
             let objects = try persistanceService.context.fetch(fetchRequest)
@@ -57,7 +57,7 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible, 
         }
     }
     
-    func deleteObject(withID id: NSManagedObjectID) {
+    public func deleteObject(withID id: NSManagedObjectID) {
         do {
             let object = try persistanceService.context.existingObject(with: id)
             persistanceService.context.delete(object)
@@ -67,12 +67,12 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible, 
         }
     }
     
-    func save(objects: [Object]) {
+    public func save(objects: [Object]) {
         objects.forEach { $0.toManagedObject(in: persistanceService.context) }
         persistanceService.saveContext()
     }
     
-    func save(object: Object) {
+    public func save(object: Object) {
         object.toManagedObject(in: persistanceService.context)
         persistanceService.saveContext()
     }
