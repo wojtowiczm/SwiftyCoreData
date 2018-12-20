@@ -6,4 +6,14 @@
 //  Copyright © 2018 Michał Wójtowicz. All rights reserved.
 //
 
-import Foundation
+import SwiftyCoreData
+
+class ViewModel {
+    
+    let catsDataBaseWorker = SCDWorker<Cat, CatEntity>(persistanceService: PersistanceService.shared)
+    
+    func loadCats(completion: ([Cat]) -> Void) {
+        catsDataBaseWorker.fetchAllObjects(completion: completion)
+    }
+}
+
