@@ -8,7 +8,7 @@
 
 import CoreData
 
-protocol SCDPersistanceService {
+public protocol SCDPersistanceService {
     var context: NSManagedObjectContext { get set }
     var persistanceContainer: NSPersistentContainer { get set }
     func saveContext()

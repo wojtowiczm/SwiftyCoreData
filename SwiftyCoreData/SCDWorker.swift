@@ -8,7 +8,7 @@
 
 import CoreData
 
-struct SwiftyCoreDataWorker<Object, ManagedObject>
+public struct SwiftyCoreDataWorker<Object, ManagedObject>
 where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible, ManagedObject: NSManagedObject {
     
     let persistanceService: SCDPersistanceService

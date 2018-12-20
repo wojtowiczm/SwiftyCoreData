@@ -8,7 +8,7 @@
 
 import CoreData
 
-protocol SCDObjectConvertible {
+public protocol SCDObjectConvertible {
     associatedtype Object
     func toObject() -> Object
 }

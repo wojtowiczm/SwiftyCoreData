@@ -8,6 +8,6 @@
 
 import CoreData
 
-protocol SCDManagedObjectConvertible {
+public protocol SCDManagedObjectConvertible {
     func toManagedObject(in context: NSManagedObjectContext)
 }
