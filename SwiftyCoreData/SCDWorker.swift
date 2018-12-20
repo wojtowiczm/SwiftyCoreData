@@ -8,12 +8,12 @@
 
 import CoreData
 
-public struct SwiftyCoreDataWorker<Object, ManagedObject>
+public struct SCDWorker<Object, ManagedObject>
 where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible, ManagedObject: NSManagedObject {
     
     let persistanceService: SCDPersistanceService
     
-    init(persistanceService: SCDPersistanceService) {
+    public init(persistanceService: SCDPersistanceService) {
         self.persistanceService = persistanceService
     }
     

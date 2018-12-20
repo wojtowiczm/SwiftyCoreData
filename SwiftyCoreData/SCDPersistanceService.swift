@@ -9,7 +9,22 @@
 import CoreData
 
 public protocol SCDPersistanceService {
-    var context: NSManagedObjectContext { get set }
+   
     var persistanceContainer: NSPersistentContainer { get set }
-    func saveContext()
+}
+
+public extension SCDPersistanceService {
+    
+    var context: NSManagedObjectContext {
+        return persistanceContainer.viewContext
+    }
+    
+    func saveContext() {
+        guard context.hasChanges else { return }
+        do {
+            try context.save()
+        } catch {
+            print("SCDError: \(error.localizedDescription)")
+        }
+    }
 }
