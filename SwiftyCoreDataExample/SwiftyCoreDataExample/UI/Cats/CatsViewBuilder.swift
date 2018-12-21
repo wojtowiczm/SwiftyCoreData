@@ -77,17 +77,3 @@ class CatsViewBuilder {
         tableView.activateConstraints()
     }
 }
-
-extension UIView {
-    
-    func activateConstraints() {
-        constraints.forEach { $0.isActive = true }
-    }
-    
-    func layoutable() -> Self {
-        translatesAutoresizingMaskIntoConstraints = false
-        return self
-    }
-    
-    
-}

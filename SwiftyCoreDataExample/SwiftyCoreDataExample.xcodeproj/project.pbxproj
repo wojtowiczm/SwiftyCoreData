@@ -20,6 +20,7 @@
 		FF4B4BAF21CBAE0100CECDB8 /* CatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4B4BAE21CBAE0100CECDB8 /* CatsViewModel.swift */; };
 		FF4B4BB121CBAE2200CECDB8 /* PersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4B4BB021CBAE2200CECDB8 /* PersistanceService.swift */; };
 		FF8572F921CBE6AB00676CBA /* CatsViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8572F821CBE6AB00676CBA /* CatsViewBuilder.swift */; };
+		FF9BCB3521CCF1D200DE0F4D /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9BCB3421CCF1D200DE0F4D /* UIViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		FF4B4BAE21CBAE0100CECDB8 /* CatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsViewModel.swift; sourceTree = "<group>"; };
 		FF4B4BB021CBAE2200CECDB8 /* PersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceService.swift; sourceTree = "<group>"; };
 		FF8572F821CBE6AB00676CBA /* CatsViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsViewBuilder.swift; sourceTree = "<group>"; };
+		FF9BCB3421CCF1D200DE0F4D /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 		FF4B4B7B21CBA46600CECDB8 /* SwiftyCoreDataExample */ = {
 			isa = PBXGroup;
 			children = (
+				FF9BCB3321CCF1B800DE0F4D /* Extension */,
 				FF9BCB3121CCEF7000DE0F4D /* UI */,
 				FF4B4BA121CBA81E00CECDB8 /* Model */,
 				FF4B4BA021CBA81600CECDB8 /* Persistance */,
@@ -164,6 +167,14 @@
 				FF4B4BAE21CBAE0100CECDB8 /* CatsViewModel.swift */,
 			);
 			path = Cats;
+			sourceTree = "<group>";
+		};
+		FF9BCB3321CCF1B800DE0F4D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				FF9BCB3421CCF1D200DE0F4D /* UIViewExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +272,7 @@
 				FF4B4B7D21CBA46600CECDB8 /* AppDelegate.swift in Sources */,
 				FF4B4BAF21CBAE0100CECDB8 /* CatsViewModel.swift in Sources */,
 				FF4B4BB121CBAE2200CECDB8 /* PersistanceService.swift in Sources */,
+				FF9BCB3521CCF1D200DE0F4D /* UIViewExtension.swift in Sources */,
 				FF8572F921CBE6AB00676CBA /* CatsViewBuilder.swift in Sources */,
 				FF4B4BAC21CBAC3000CECDB8 /* CatEntity.swift in Sources */,
 			);
