@@ -10,5 +10,5 @@ import CoreData
 
 public protocol SCDManagedObjectConvertible {
     
-    func putManagedObject(in context: NSManagedObjectContext)
+    func put(in context: NSManagedObjectContext)
 }
