@@ -8,12 +8,29 @@
 
 import UIKit
 
-class ViewBuilder {
+class CatsViewBuilder {
     
     let parentView: UIView
     
+    lazy var reloadButton: UIButton = {
+        let button = UIButton().layoutable()
+        return button
+    }()
+    
+    lazy var clearButton: UIButton = {
+        let button = UIButton().layoutable()
+        return button
+    }()
+    
+    lazy var addButton: UIButton = {
+        let button = UIButton().layoutable()
+        return button
+    }()
+    
     lazy var buttonsStackView: UIStackView = {
-        return UIStackView().layoutable()
+        let stackView = UIStackView().layoutable()
+        stackView.axis = .horizontal
+        return stackView
     }()
     
     init(with parentView: UIView) {
@@ -21,23 +38,42 @@ class ViewBuilder {
     }
     
     lazy var tableView: UITableView = {
-        return UITableView().layoutable()
+        let tableView = UITableView().layoutable()
+        tableView.rowHeight = UITableView.automaticDimension
+        return tableView
     }()
     
     func build() {
-        
+        setupProperties()
+        setupHierarchy()
+        setupConstraints()
+        activateConstraints()
+    }
+    
+    private func setupProperties() {
+        clearButton.setTitle("CLEAR", for: .normal)
+        reloadButton.setTitle("RELOAD", for: .normal)
+        addButton.setTitle("ADD", for: .normal)
+    }
+    
+    private func setupHierarchy() {
+        [clearButton, reloadButton, addButton].forEach { buttonsStackView.addArrangedSubview($0) }
+        [buttonsStackView, tableView].forEach { parentView.addSubview($0) }
     }
     
     private func setupConstraints() {
         buttonsStackView.topAnchor.constraint(equalTo: parentView.topAnchor)
         buttonsStackView.leadingAnchor.constraint(equalTo: parentView.leadingAnchor)
         buttonsStackView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor)
-        buttonsStackView.activateConstraints()
         
         tableView.topAnchor.constraint(equalTo: buttonsStackView.bottomAnchor)
         tableView.leadingAnchor.constraint(equalTo: parentView.leadingAnchor)
         tableView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor)
         tableView.bottomAnchor.constraint(equalTo: parentView.bottomAnchor)
+    }
+    
+    private func activateConstraints() {
+        buttonsStackView.activateConstraints()
         tableView.activateConstraints()
     }
 }

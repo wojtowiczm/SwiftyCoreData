@@ -17,7 +17,6 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible, 
         self.persistanceService = persistanceService
     }
     
-    
     public func fetchAllObjects(completion: @escaping (([Object]?) -> Void)) {
         persistanceService.context.perform {
             guard let fetchRequest = ManagedObject.fetchRequest() as? NSFetchRequest<ManagedObject> else {

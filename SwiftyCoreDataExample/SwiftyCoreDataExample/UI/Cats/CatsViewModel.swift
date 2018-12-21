@@ -9,17 +9,15 @@
 import CoreData
 import SwiftyCoreData
 
-class ViewModel {
+class CatsViewModel {
     
-    let catsDataBaseWorker = SCDWorker<Cat, CatEntity>(persistanceService: PersistanceService.shared)
+    var catsChanged: (([Cat]) -> Void)?
     
-    func loadCats(completion: @escaping ([Cat]) -> Void) {
-        catsDataBaseWorker.fetchAllObjects {
-            guard let cats = $0 else {
-                completion([])
-                return
-            }
-            completion(cats)
+    private let catsDataBaseWorker = SCDWorker<Cat, CatEntity>(persistanceService: PersistanceService.shared)
+    
+    func loadCats() {
+        catsDataBaseWorker.fetchAllObjects { [weak self] in
+            self?.catsChanged?($0 ?? [])
         }
     }
     
@@ -27,7 +25,7 @@ class ViewModel {
         catsDataBaseWorker.deleteObject(withID: id)
     }
     
-    func restoreData() {
+    func restoreCats() {
         let cats = [
             Cat(name: "Wilfredo", weight: 2.4, age: 3, managedObjectID: nil),
             Cat(name: "Bruno", weight: 1.2, age: 1, managedObjectID: nil),
