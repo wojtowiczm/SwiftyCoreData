@@ -6,7 +6,7 @@
 //  Copyright © 2018 Michał Wójtowicz. All rights reserved.
 //
 
-import UIView
+import UIKit
 
 extension UIView {
     

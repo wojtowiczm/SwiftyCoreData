@@ -12,7 +12,6 @@
 		FF4B4B3021CB933800CECDB8 /* SCDManagedObjectConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4B4B2F21CB933800CECDB8 /* SCDManagedObjectConvertible.swift */; };
 		FF4B4B3221CB935F00CECDB8 /* SCDPersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4B4B3121CB935F00CECDB8 /* SCDPersistanceService.swift */; };
 		FF4B4B3421CB938500CECDB8 /* SCDObjectConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4B4B3321CB938500CECDB8 /* SCDObjectConvertible.swift */; };
-		FF4B4B6221CBA0D900CECDB8 /* SwiftyCoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4B4B2121CB8E5D00CECDB8 /* SwiftyCoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +29,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF4B4B6221CBA0D900CECDB8 /* SwiftyCoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +288,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SwiftyCoreData/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -317,6 +316,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SwiftyCoreData/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
