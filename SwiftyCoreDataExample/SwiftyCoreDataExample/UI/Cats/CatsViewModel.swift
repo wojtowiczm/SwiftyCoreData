@@ -37,6 +37,7 @@ class CatsViewModel {
         ]
         catsDataBaseWorker.deleteAll()
         catsDataBaseWorker.save(objects: cats)
+        loadCats()
     }
 }
 

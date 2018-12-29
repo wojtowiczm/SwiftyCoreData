@@ -30,12 +30,9 @@ class CatsViewBuilder {
     lazy var buttonsStackView: UIStackView = {
         let stackView = UIStackView().layoutable()
         stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
         return stackView
     }()
-    
-    init(with parentView: UIView) {
-        self.parentView = parentView
-    }
     
     lazy var tableView: UITableView = {
         let tableView = UITableView().layoutable()
@@ -44,11 +41,14 @@ class CatsViewBuilder {
         return tableView
     }()
     
+    init(with parentView: UIView) {
+        self.parentView = parentView
+    }
+    
     func build() {
         setupProperties()
         setupHierarchy()
         setupConstraints()
-        activateConstraints()
     }
     
     private func setupProperties() {
@@ -63,18 +63,13 @@ class CatsViewBuilder {
     }
     
     private func setupConstraints() {
-        buttonsStackView.topAnchor.constraint(equalTo: parentView.topAnchor)
-        buttonsStackView.leadingAnchor.constraint(equalTo: parentView.leadingAnchor)
-        buttonsStackView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor)
-        
-        tableView.topAnchor.constraint(equalTo: buttonsStackView.bottomAnchor)
-        tableView.leadingAnchor.constraint(equalTo: parentView.leadingAnchor)
-        tableView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor)
-        tableView.bottomAnchor.constraint(equalTo: parentView.bottomAnchor)
-    }
-    
-    private func activateConstraints() {
-        buttonsStackView.activateConstraints()
-        tableView.activateConstraints()
+        buttonsStackView.topAnchor.equalTo(parentView.safeAreaLayoutGuide.topAnchor)
+        buttonsStackView.leadingAnchor.equalTo(parentView.leadingAnchor)
+        buttonsStackView.trailingAnchor.equalTo(parentView.trailingAnchor)
+
+        tableView.topAnchor.equalTo(buttonsStackView.bottomAnchor)
+        tableView.leadingAnchor.equalTo(parentView.leadingAnchor)
+        tableView.trailingAnchor.equalTo(parentView.trailingAnchor)
+        tableView.bottomAnchor.equalTo(parentView.bottomAnchor)
     }
 }

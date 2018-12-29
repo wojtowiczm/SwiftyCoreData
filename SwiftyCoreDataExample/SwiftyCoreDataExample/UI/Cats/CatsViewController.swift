@@ -19,10 +19,9 @@ class CatsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .red
         viewBuilder.build()
-    
         viewModel.loadCats()
-        
         bindUI()
         bindViewModel()
     }
@@ -48,6 +47,7 @@ class CatsViewController: UIViewController {
     
     @objc func clearButtonTapped(_ sender: UIButton) {
         viewModel.deleteCats()
+        viewModel.loadCats()
     }
     
     @objc func reloadButtonTapped(_ sender: UIButton) {

@@ -23,6 +23,7 @@
 		FF9BCB3521CCF1D200DE0F4D /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9BCB3421CCF1D200DE0F4D /* UIViewExtension.swift */; };
 		FFE8FBA021D7A85500B1019C /* CatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE8FB9F21D7A85500B1019C /* CatsTableViewCell.swift */; };
 		FFE8FBA221D7A98A00B1019C /* CatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE8FBA121D7A98A00B1019C /* CatsTableViewController.swift */; };
+		FFE8FBA421D7E68A00B1019C /* NSLayoutAnchor.Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE8FBA321D7E68A00B1019C /* NSLayoutAnchor.Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		FF9BCB3421CCF1D200DE0F4D /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		FFE8FB9F21D7A85500B1019C /* CatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsTableViewCell.swift; sourceTree = "<group>"; };
 		FFE8FBA121D7A98A00B1019C /* CatsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsTableViewController.swift; sourceTree = "<group>"; };
+		FFE8FBA321D7E68A00B1019C /* NSLayoutAnchor.Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutAnchor.Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				FF9BCB3421CCF1D200DE0F4D /* UIViewExtension.swift */,
+				FFE8FBA321D7E68A00B1019C /* NSLayoutAnchor.Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF4B4B7F21CBA46600CECDB8 /* CatsViewController.swift in Sources */,
+				FFE8FBA421D7E68A00B1019C /* NSLayoutAnchor.Extension.swift in Sources */,
 				FF4B4BA321CBA82C00CECDB8 /* Cat.swift in Sources */,
 				FFE8FBA221D7A98A00B1019C /* CatsTableViewController.swift in Sources */,
 				FFE8FBA021D7A85500B1019C /* CatsTableViewCell.swift in Sources */,
