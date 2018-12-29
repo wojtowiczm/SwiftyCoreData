@@ -40,6 +40,7 @@ class CatsViewBuilder {
     lazy var tableView: UITableView = {
         let tableView = UITableView().layoutable()
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(CatTableViewCell.self, forCellReuseIdentifier: CatTableViewCell.id)
         return tableView
     }()
     
