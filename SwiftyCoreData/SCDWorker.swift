@@ -67,12 +67,12 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible, 
     }
     
     public func save(objects: [Object]) {
-        objects.forEach { $0.putManagedObject(in: persistanceService.context) }
+        objects.forEach { $0.put(in: persistanceService.context) }
         persistanceService.saveContext()
     }
     
     public func save(object: Object) {
-        object.putManagedObject(in: persistanceService.context)
+        object.put(in: persistanceService.context)
         persistanceService.saveContext()
     }
 }
