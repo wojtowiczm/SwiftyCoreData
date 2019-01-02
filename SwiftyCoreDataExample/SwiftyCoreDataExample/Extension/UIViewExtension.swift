@@ -18,4 +18,11 @@ extension UIView {
         translatesAutoresizingMaskIntoConstraints = false
         return self
     }
+    
+    func edges(equalTo other: UIView) {
+        topAnchor.equalTo(other.topAnchor)
+        leadingAnchor.equalTo(other.leadingAnchor)
+        trailingAnchor.equalTo(other.trailingAnchor)
+        bottomAnchor.equalTo(other.bottomAnchor)
+    }
 }

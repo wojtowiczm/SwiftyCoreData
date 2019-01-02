@@ -17,7 +17,7 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible, 
         self.persistanceService = persistanceService
     }
     
-    public func fetchAllObjects(completion: @escaping (([Object]?) -> Void)) {
+    public func fetchAll(withPredicate predicate: NSPredicate? = nil, completion: @escaping (([Object]?) -> Void)) {
         persistanceService.context.perform {
             guard let fetchRequest = ManagedObject.fetchRequest() as? NSFetchRequest<ManagedObject> else {
                 completion(nil)
@@ -33,7 +33,7 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible, 
         }
     }
     
-    public func fetchObject(with id: NSManagedObjectID, completion: ((Object?) -> Void)) {
+    public func fetch(withId id: NSManagedObjectID, completion: ((Object?) -> Void)) {
         do {
             let result = try persistanceService.context.existingObject(with: id) as! ManagedObject
             if let object = result.toObject() as? Object {
@@ -45,7 +45,7 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible, 
         }
     }
     
-    public func deleteObjects() {
+    public func deleteAll() {
         guard let fetchRequest: NSFetchRequest<ManagedObject> = ManagedObject.fetchRequest() as? NSFetchRequest<ManagedObject> else { return }
         do {
             let objects = try persistanceService.context.fetch(fetchRequest)
@@ -56,7 +56,7 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible, 
         }
     }
     
-    public func deleteObject(withID id: NSManagedObjectID) {
+    public func deleteObject(withId id: NSManagedObjectID) {
         do {
             let object = try persistanceService.context.existingObject(with: id)
             persistanceService.context.delete(object)
@@ -75,4 +75,10 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible, 
         object.put(in: persistanceService.context)
         persistanceService.saveContext()
     }
+    
+    public func update(withId id: NSManagedObjectID, to newObject: Object) {
+        deleteObject(withId: id)
+        save(object: newObject)
+    }
+    
 }

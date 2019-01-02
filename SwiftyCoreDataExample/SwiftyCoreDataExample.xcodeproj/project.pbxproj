@@ -21,6 +21,9 @@
 		FF4B4BB121CBAE2200CECDB8 /* PersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4B4BB021CBAE2200CECDB8 /* PersistanceService.swift */; };
 		FF8572F921CBE6AB00676CBA /* CatsViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8572F821CBE6AB00676CBA /* CatsViewBuilder.swift */; };
 		FF9BCB3521CCF1D200DE0F4D /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9BCB3421CCF1D200DE0F4D /* UIViewExtension.swift */; };
+		FFE8FBA021D7A85500B1019C /* CatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE8FB9F21D7A85500B1019C /* CatsTableViewCell.swift */; };
+		FFE8FBA221D7A98A00B1019C /* CatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE8FBA121D7A98A00B1019C /* CatsTableViewController.swift */; };
+		FFE8FBA421D7E68A00B1019C /* NSLayoutAnchor.Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE8FBA321D7E68A00B1019C /* NSLayoutAnchor.Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +73,9 @@
 		FF4B4BB021CBAE2200CECDB8 /* PersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceService.swift; sourceTree = "<group>"; };
 		FF8572F821CBE6AB00676CBA /* CatsViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsViewBuilder.swift; sourceTree = "<group>"; };
 		FF9BCB3421CCF1D200DE0F4D /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		FFE8FB9F21D7A85500B1019C /* CatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsTableViewCell.swift; sourceTree = "<group>"; };
+		FFE8FBA121D7A98A00B1019C /* CatsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsTableViewController.swift; sourceTree = "<group>"; };
+		FFE8FBA321D7E68A00B1019C /* NSLayoutAnchor.Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutAnchor.Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +168,7 @@
 		FF9BCB3221CCEF7600DE0F4D /* Cats */ = {
 			isa = PBXGroup;
 			children = (
+				FFE8FB9E21D7A83B00B1019C /* TableView */,
 				FF4B4B7E21CBA46600CECDB8 /* CatsViewController.swift */,
 				FF8572F821CBE6AB00676CBA /* CatsViewBuilder.swift */,
 				FF4B4BAE21CBAE0100CECDB8 /* CatsViewModel.swift */,
@@ -173,8 +180,18 @@
 			isa = PBXGroup;
 			children = (
 				FF9BCB3421CCF1D200DE0F4D /* UIViewExtension.swift */,
+				FFE8FBA321D7E68A00B1019C /* NSLayoutAnchor.Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		FFE8FB9E21D7A83B00B1019C /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				FFE8FB9F21D7A85500B1019C /* CatsTableViewCell.swift */,
+				FFE8FBA121D7A98A00B1019C /* CatsTableViewController.swift */,
+			);
+			path = TableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,7 +284,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF4B4B7F21CBA46600CECDB8 /* CatsViewController.swift in Sources */,
+				FFE8FBA421D7E68A00B1019C /* NSLayoutAnchor.Extension.swift in Sources */,
 				FF4B4BA321CBA82C00CECDB8 /* Cat.swift in Sources */,
+				FFE8FBA221D7A98A00B1019C /* CatsTableViewController.swift in Sources */,
+				FFE8FBA021D7A85500B1019C /* CatsTableViewCell.swift in Sources */,
 				FF4B4B8521CBA46600CECDB8 /* SwiftyCoreDataExample.xcdatamodeld in Sources */,
 				FF4B4B7D21CBA46600CECDB8 /* AppDelegate.swift in Sources */,
 				FF4B4BAF21CBAE0100CECDB8 /* CatsViewModel.swift in Sources */,
