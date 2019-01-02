@@ -13,8 +13,6 @@
 		FF4B4B8521CBA46600CECDB8 /* SwiftyCoreDataExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF4B4B8321CBA46600CECDB8 /* SwiftyCoreDataExample.xcdatamodeld */; };
 		FF4B4B8721CBA46700CECDB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF4B4B8621CBA46700CECDB8 /* Assets.xcassets */; };
 		FF4B4B8A21CBA46700CECDB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF4B4B8821CBA46700CECDB8 /* LaunchScreen.storyboard */; };
-		FF4B4B9721CBA4FB00CECDB8 /* SwiftyCoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4B4B9621CBA47D00CECDB8 /* SwiftyCoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		FF4B4B9821CBA4FB00CECDB8 /* SwiftyCoreData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF4B4B9621CBA47D00CECDB8 /* SwiftyCoreData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF4B4BA321CBA82C00CECDB8 /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4B4BA221CBA82C00CECDB8 /* Cat.swift */; };
 		FF4B4BAC21CBAC3000CECDB8 /* CatEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4B4BAA21CBAC3000CECDB8 /* CatEntity.swift */; };
 		FF4B4BAF21CBAE0100CECDB8 /* CatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4B4BAE21CBAE0100CECDB8 /* CatsViewModel.swift */; };
@@ -26,23 +24,6 @@
 		FFE8FBA421D7E68A00B1019C /* NSLayoutAnchor.Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE8FBA321D7E68A00B1019C /* NSLayoutAnchor.Extension.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		FF4B4B9521CBA47D00CECDB8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FF4B4B9121CBA47C00CECDB8 /* SwiftyCoreData.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = FF4B4B2121CB8E5D00CECDB8;
-			remoteInfo = SwiftyCoreData;
-		};
-		FF4B4B9921CBA4FB00CECDB8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FF4B4B9121CBA47C00CECDB8 /* SwiftyCoreData.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = FF4B4B2021CB8E5C00CECDB8;
-			remoteInfo = SwiftyCoreData;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		FF4B4B9B21CBA4FB00CECDB8 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -50,7 +31,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				FF4B4B9821CBA4FB00CECDB8 /* SwiftyCoreData.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -66,7 +46,6 @@
 		FF4B4B8621CBA46700CECDB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF4B4B8921CBA46700CECDB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF4B4B8B21CBA46700CECDB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FF4B4B9121CBA47C00CECDB8 /* SwiftyCoreData.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyCoreData.xcodeproj; path = ../SwiftyCoreData.xcodeproj; sourceTree = "<group>"; };
 		FF4B4BA221CBA82C00CECDB8 /* Cat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cat.swift; sourceTree = "<group>"; };
 		FF4B4BAA21CBAC3000CECDB8 /* CatEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatEntity.swift; sourceTree = "<group>"; };
 		FF4B4BAE21CBAE0100CECDB8 /* CatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsViewModel.swift; sourceTree = "<group>"; };
@@ -83,7 +62,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF4B4B9721CBA4FB00CECDB8 /* SwiftyCoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +71,6 @@
 		FF4B4B7021CBA46600CECDB8 = {
 			isa = PBXGroup;
 			children = (
-				FF4B4B9121CBA47C00CECDB8 /* SwiftyCoreData.xcodeproj */,
 				FF4B4B7B21CBA46600CECDB8 /* SwiftyCoreDataExample */,
 				FF4B4B7A21CBA46600CECDB8 /* Products */,
 			);
@@ -122,14 +99,6 @@
 				FF4B4B8321CBA46600CECDB8 /* SwiftyCoreDataExample.xcdatamodeld */,
 			);
 			path = SwiftyCoreDataExample;
-			sourceTree = "<group>";
-		};
-		FF4B4B9221CBA47C00CECDB8 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				FF4B4B9621CBA47D00CECDB8 /* SwiftyCoreData.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		FF4B4BA021CBA81600CECDB8 /* Persistance */ = {
@@ -209,7 +178,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				FF4B4B9A21CBA4FB00CECDB8 /* PBXTargetDependency */,
 			);
 			name = SwiftyCoreDataExample;
 			productName = SwiftyCoreDataExample;
@@ -242,28 +210,12 @@
 			mainGroup = FF4B4B7021CBA46600CECDB8;
 			productRefGroup = FF4B4B7A21CBA46600CECDB8 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = FF4B4B9221CBA47C00CECDB8 /* Products */;
-					ProjectRef = FF4B4B9121CBA47C00CECDB8 /* SwiftyCoreData.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				FF4B4B7821CBA46600CECDB8 /* SwiftyCoreDataExample */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		FF4B4B9621CBA47D00CECDB8 /* SwiftyCoreData.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SwiftyCoreData.framework;
-			remoteRef = FF4B4B9521CBA47D00CECDB8 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		FF4B4B7721CBA46600CECDB8 /* Resources */ = {
@@ -299,14 +251,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		FF4B4B9A21CBA4FB00CECDB8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SwiftyCoreData;
-			targetProxy = FF4B4B9921CBA4FB00CECDB8 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		FF4B4B8021CBA46600CECDB8 /* Main.storyboard */ = {
