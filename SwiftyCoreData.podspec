@@ -3,8 +3,8 @@ Pod::Spec.new do |s|
 
   s.name         = "SwiftyCoreData"
   s.version      = "0.0.1"
-  s.summary      = "A short description of [SwiftyCoreData."
-  s.description  = "Lightweight wrapper for old fashioned CoreData framework"
+  s.summary      = "Lightweight wrapper for old fashioned CoreData framework"
+  s.description  = "TBD"
 
   s.homepage     = "https://github.com/wojtowiczm"
 
@@ -15,8 +15,8 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/wojtowiczm/SwiftyCoreData.git", :tag => "#{s.version}" }
 
 
-  s.source_files  = "Classes", "Classes/**/*.{h,m}"
-  s.exclude_files = "Classes/Exclude"
+  s.source_files  = "SwiftyCoreData/**/*.swift"
+
 
 
 end
