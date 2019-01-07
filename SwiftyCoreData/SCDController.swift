@@ -1,5 +1,5 @@
 //
-//  SCDWorker.swift
+//  SCDController.swift
 //  SwiftyCoreData
 //
 //  Created by Michał Wójtowicz on 20/12/2018.
@@ -8,7 +8,7 @@
 
 import CoreData
 
-public struct SCDWorker<Object, ManagedObject>
+public struct SCDController<Object, ManagedObject>
 where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible, ManagedObject: NSManagedObject {
     
     let persistanceService: SCDPersistanceService

@@ -13,7 +13,7 @@ class CatsViewModel {
     
     var catsChanged: (([Cat]) -> Void)?
     
-    private let catsDataBaseWorker = SCDWorker<Cat, CatEntity>(persistanceService: PersistanceService.shared)
+    private let catsDataBaseWorker = SCDController<Cat, CatEntity>(persistanceService: PersistanceService.shared)
     
     func loadCats() {
         catsDataBaseWorker.fetchAll { [weak self] in
