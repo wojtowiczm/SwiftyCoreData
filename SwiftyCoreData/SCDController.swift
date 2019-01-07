@@ -11,20 +11,23 @@ import CoreData
 public struct SCDController<Object, ManagedObject>
 where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible, ManagedObject: NSManagedObject {
     
-    let persistanceService: SCDPersistanceService
+    let persistentContainer: NSPersistentContainer
     
-    public init(persistanceService: SCDPersistanceService) {
-        self.persistanceService = persistanceService
+    private var currentContext: NSManagedObjectContext!
+    
+    public init(with container: NSPersistentContainer, qos: DispatchQoS = .background) {
+        self.persistentContainer = container
+        self.currentContext = provideContext(for: qos)
     }
     
     public func fetchAll(withPredicate predicate: NSPredicate? = nil, completion: @escaping (([Object]?) -> Void)) {
-        persistanceService.context.perform {
+        currentContext.perform {
             guard let fetchRequest = ManagedObject.fetchRequest() as? NSFetchRequest<ManagedObject> else {
                 completion(nil)
                 return
             }
             do {
-                let managedObjects = try self.persistanceService.context.fetch(fetchRequest)
+                let managedObjects = try self.currentContext.fetch(fetchRequest)
                 completion(managedObjects.compactMap { $0.toObject() as? Object})
             } catch {
                 print("SDCError \(error.localizedDescription)")
@@ -35,7 +38,7 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible, 
     
     public func fetch(withId id: NSManagedObjectID, completion: ((Object?) -> Void)) {
         do {
-            let result = try persistanceService.context.existingObject(with: id) as! ManagedObject
+            let result = try currentContext.existingObject(with: id) as! ManagedObject
             if let object = result.toObject() as? Object {
                 completion(object)
             }
@@ -48,9 +51,9 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible, 
     public func deleteAll() {
         guard let fetchRequest: NSFetchRequest<ManagedObject> = ManagedObject.fetchRequest() as? NSFetchRequest<ManagedObject> else { return }
         do {
-            let objects = try persistanceService.context.fetch(fetchRequest)
-            objects.forEach { persistanceService.context.delete($0) }
-            persistanceService.saveContext()
+            let objects = try currentContext.fetch(fetchRequest)
+            objects.forEach { currentContext.delete($0) }
+            saveContext()
         } catch {
             print("SDCError \(error.localizedDescription)")
         }
@@ -58,22 +61,22 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible, 
     
     public func deleteObject(withId id: NSManagedObjectID) {
         do {
-            let object = try persistanceService.context.existingObject(with: id)
-            persistanceService.context.delete(object)
-            persistanceService.saveContext()
+            let object = try currentContext.existingObject(with: id)
+            currentContext.delete(object)
+            saveContext()
         } catch {
             print("SDCError \(error.localizedDescription)")
         }
     }
     
     public func save(objects: [Object]) {
-        objects.forEach { $0.put(in: persistanceService.context) }
-        persistanceService.saveContext()
+        objects.forEach { $0.put(in: currentContext) }
+        saveContext()
     }
     
     public func save(object: Object) {
-        object.put(in: persistanceService.context)
-        persistanceService.saveContext()
+        object.put(in: currentContext)
+        saveContext()
     }
     
     public func update(withId id: NSManagedObjectID, to newObject: Object) {
@@ -81,4 +84,25 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible, 
         save(object: newObject)
     }
     
+}
+
+// MARK: - Helper methods
+
+extension SCDController {
+    
+    private func provideContext(for qos: DispatchQoS) -> NSManagedObjectContext {
+        
+        // TODO
+        return persistentContainer.newBackgroundContext()
+    }
+    
+    private func saveContext() {
+        guard currentContext.hasChanges else { return }
+        
+        do {
+            try currentContext.save()
+        } catch {
+            print("SCDError: \(error.localizedDescription)")
+        }
+    }
 }
