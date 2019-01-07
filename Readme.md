@@ -13,7 +13,20 @@ pod 'SwiftyCoreData', :git => 'https://github.com/wojtowiczm/SwiftyCoreData.git'
 in your podfile
 
 ## Usage
-After implementing all steps showed below our logic Code will look like
+After implementing all steps showed below our logic code will look like this:
+```swift
+
+import SwiftyCoreData
+
+class ViewModel {
+
+    let dbController = SCDController<Cat, CatEntity>(with: persistanceContainer)
+
+    func loadCache() {
+        dbController
+    }
+}
+```
 
 ## Step by step
 First of all create your .xcdatamodeld with proper ManagedObjects and generate ManagedObject subclass in your code. You can use default code generator provided by xCode. (Editor > Create NSManagedObjectSubclass...)*
