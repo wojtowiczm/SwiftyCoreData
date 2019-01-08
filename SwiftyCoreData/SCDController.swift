@@ -24,27 +24,31 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
         currentContext.perform {
             guard let fetchRequest = ManagedObject.fetchRequest() as? NSFetchRequest<ManagedObject> else {
                 self.printError(message: "Coudn't not perform fetchRequest for \(ManagedObject.classForCoder())")
+                completion([])
                 return
             }
             do {
                 let managedObjects = try self.currentContext.fetch(fetchRequest)
                 completion(managedObjects.compactMap { $0.toObject() as? Object})
             } catch {
+                completion([])
                 self.printError(message: error.localizedDescription)
             }
         }
     }
     
     public func fetch(withId id: NSManagedObjectID, completion: ((Object?) -> Void)) {
-        do {
-            let result = try currentContext.existingObject(with: id) as! ManagedObject
-            if let object = result.toObject() as? Object {
-                completion(object)
+            do {
+                guard let result = try currentContext.existingObject(with: id) as? ManagedObject else {
+                    printError(message: "NSManagedObject is not SCDObjectConvertible")
+                    completion(nil)
+                    return
+                }
+                completion(result.toObject() as? Object)
+            } catch {
+                printError(message: error.localizedDescription)
+                completion(nil)
             }
-        } catch {
-            printError(message: error.localizedDescription)
-            completion(nil)
-        }
     }
     
     public func deleteAll() {
