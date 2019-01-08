@@ -33,6 +33,3 @@ extension CatEntity: SCDObjectConvertible {
         return Cat(name: name, weight: weight, age: Int(age), managedObjectID: objectID)
     }
 }
-
-
-

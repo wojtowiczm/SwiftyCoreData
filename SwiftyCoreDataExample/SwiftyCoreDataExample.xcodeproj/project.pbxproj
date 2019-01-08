@@ -19,6 +19,11 @@
 		FF4B4BB121CBAE2200CECDB8 /* PersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4B4BB021CBAE2200CECDB8 /* PersistanceService.swift */; };
 		FF8572F921CBE6AB00676CBA /* CatsViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8572F821CBE6AB00676CBA /* CatsViewBuilder.swift */; };
 		FF9BCB3521CCF1D200DE0F4D /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9BCB3421CCF1D200DE0F4D /* UIViewExtension.swift */; };
+		FFB2BBA321E4FDB9000922DF /* SwiftyCoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB2BBA221E4FDB9000922DF /* SwiftyCoreData.framework */; };
+		FFB2BBA421E4FDBE000922DF /* SwiftyCoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB2BBA221E4FDB9000922DF /* SwiftyCoreData.framework */; };
+		FFB2BBA521E4FDBE000922DF /* SwiftyCoreData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFB2BBA221E4FDB9000922DF /* SwiftyCoreData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FFB2BBA821E4FF73000922DF /* DataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB2BBA721E4FF73000922DF /* DataSet.swift */; };
+		FFB2BBAA21E50048000922DF /* BenchmarkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB2BBA921E50048000922DF /* BenchmarkOperation.swift */; };
 		FFE8FBA021D7A85500B1019C /* CatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE8FB9F21D7A85500B1019C /* CatsTableViewCell.swift */; };
 		FFE8FBA221D7A98A00B1019C /* CatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE8FBA121D7A98A00B1019C /* CatsTableViewController.swift */; };
 		FFE8FBA421D7E68A00B1019C /* NSLayoutAnchor.Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE8FBA321D7E68A00B1019C /* NSLayoutAnchor.Extension.swift */; };
@@ -31,6 +36,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				FFB2BBA521E4FDBE000922DF /* SwiftyCoreData.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -52,6 +58,9 @@
 		FF4B4BB021CBAE2200CECDB8 /* PersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceService.swift; sourceTree = "<group>"; };
 		FF8572F821CBE6AB00676CBA /* CatsViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsViewBuilder.swift; sourceTree = "<group>"; };
 		FF9BCB3421CCF1D200DE0F4D /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		FFB2BBA221E4FDB9000922DF /* SwiftyCoreData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyCoreData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFB2BBA721E4FF73000922DF /* DataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSet.swift; sourceTree = "<group>"; };
+		FFB2BBA921E50048000922DF /* BenchmarkOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenchmarkOperation.swift; sourceTree = "<group>"; };
 		FFE8FB9F21D7A85500B1019C /* CatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsTableViewCell.swift; sourceTree = "<group>"; };
 		FFE8FBA121D7A98A00B1019C /* CatsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsTableViewController.swift; sourceTree = "<group>"; };
 		FFE8FBA321D7E68A00B1019C /* NSLayoutAnchor.Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutAnchor.Extension.swift; sourceTree = "<group>"; };
@@ -62,6 +71,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFB2BBA321E4FDB9000922DF /* SwiftyCoreData.framework in Frameworks */,
+				FFB2BBA421E4FDBE000922DF /* SwiftyCoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +84,7 @@
 			children = (
 				FF4B4B7B21CBA46600CECDB8 /* SwiftyCoreDataExample */,
 				FF4B4B7A21CBA46600CECDB8 /* Products */,
+				FFB2BBA121E4FDB9000922DF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,6 +99,7 @@
 		FF4B4B7B21CBA46600CECDB8 /* SwiftyCoreDataExample */ = {
 			isa = PBXGroup;
 			children = (
+				FFB2BBA621E4FF61000922DF /* Benchmark */,
 				FF9BCB3321CCF1B800DE0F4D /* Extension */,
 				FF9BCB3121CCEF7000DE0F4D /* UI */,
 				FF4B4BA121CBA81E00CECDB8 /* Model */,
@@ -152,6 +165,23 @@
 				FFE8FBA321D7E68A00B1019C /* NSLayoutAnchor.Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		FFB2BBA121E4FDB9000922DF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FFB2BBA221E4FDB9000922DF /* SwiftyCoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FFB2BBA621E4FF61000922DF /* Benchmark */ = {
+			isa = PBXGroup;
+			children = (
+				FFB2BBA721E4FF73000922DF /* DataSet.swift */,
+				FFB2BBA921E50048000922DF /* BenchmarkOperation.swift */,
+			);
+			path = Benchmark;
 			sourceTree = "<group>";
 		};
 		FFE8FB9E21D7A83B00B1019C /* TableView */ = {
@@ -237,8 +267,10 @@
 			files = (
 				FF4B4B7F21CBA46600CECDB8 /* CatsViewController.swift in Sources */,
 				FFE8FBA421D7E68A00B1019C /* NSLayoutAnchor.Extension.swift in Sources */,
+				FFB2BBA821E4FF73000922DF /* DataSet.swift in Sources */,
 				FF4B4BA321CBA82C00CECDB8 /* Cat.swift in Sources */,
 				FFE8FBA221D7A98A00B1019C /* CatsTableViewController.swift in Sources */,
+				FFB2BBAA21E50048000922DF /* BenchmarkOperation.swift in Sources */,
 				FFE8FBA021D7A85500B1019C /* CatsTableViewCell.swift in Sources */,
 				FF4B4B8521CBA46600CECDB8 /* SwiftyCoreDataExample.xcdatamodeld in Sources */,
 				FF4B4B7D21CBA46600CECDB8 /* AppDelegate.swift in Sources */,
