@@ -55,6 +55,24 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
         }
     }
     
+    public func countAll(withPredicate predicate: NSPredicate? = nil, completion: @escaping (Int) -> Void) {
+        currentContext.perform {
+            guard let fetchRequest = ManagedObject.fetchRequest() as? NSFetchRequest<ManagedObject> else {
+                self.printError(message: "Couldn't not perform fetchRequest for \(ManagedObject.classForCoder())")
+                completion(0)
+                return
+            }
+            fetchRequest.predicate = predicate
+            do {
+                let objectsCount = try self.currentContext.count(for: fetchRequest)
+                completion(objectsCount)
+            } catch {
+                completion(0)
+                self.printError(message: error.localizedDescription)
+            }
+        }
+    }
+    
     public func deleteAll(withPredicate predicate: NSPredicate? = nil) {
         guard let fetchRequest: NSFetchRequest<ManagedObject> = ManagedObject.fetchRequest() as? NSFetchRequest<ManagedObject> else { return }
         fetchRequest.predicate = predicate
