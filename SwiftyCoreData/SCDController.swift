@@ -9,7 +9,7 @@
 import CoreData
 
 public struct SCDController<Object, ManagedObject>
-where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible, ManagedObject: NSManagedObject {
+where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible & NSManagedObject {
     
     let persistentContainer: NSPersistentContainer
     
@@ -20,18 +20,17 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible, 
         self.currentContext = provideContext(for: operatingQueue)
     }
     
-    public func fetchAll(withPredicate predicate: NSPredicate? = nil, completion: @escaping (([Object]?) -> Void)) {
+    public func fetchAll(withPredicate predicate: NSPredicate? = nil, completion: @escaping (([Object]) -> Void)) {
         currentContext.perform {
             guard let fetchRequest = ManagedObject.fetchRequest() as? NSFetchRequest<ManagedObject> else {
-                completion(nil)
+                printError(message: "Coudn't not perform fetchRequest for \(ManagedObject.classForCoder())")
                 return
             }
             do {
                 let managedObjects = try self.currentContext.fetch(fetchRequest)
                 completion(managedObjects.compactMap { $0.toObject() as? Object})
             } catch {
-                print("SDCError \(error.localizedDescription)")
-                completion(nil)
+                printError(message: error.localizedDescription)
             }
         }
     }
@@ -43,7 +42,7 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible, 
                 completion(object)
             }
         } catch {
-            print("SDCError \(error.localizedDescription)")
+            printError(message: error.localizedDescription)
             completion(nil)
         }
     }
@@ -55,7 +54,7 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible, 
             objects.forEach { currentContext.delete($0) }
             saveContext()
         } catch {
-            print("SDCError \(error.localizedDescription)")
+            printError(message: error.localizedDescription)
         }
     }
     
@@ -65,7 +64,7 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible, 
             currentContext.delete(object)
             saveContext()
         } catch {
-            print("SDCError \(error.localizedDescription)")
+            printError(message: error.localizedDescription)
         }
     }
     
@@ -103,7 +102,15 @@ extension SCDController {
         do {
             try currentContext.save()
         } catch {
-            print("SCDError: \(error.localizedDescription)")
+            printError(message: error.localizedDescription)
         }
+    }
+    
+    private func printError(message: String) {
+        print("""
+        *** SwiftyCoreData error:
+            message: \(message)"
+        ***
+        """
     }
 }
