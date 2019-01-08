@@ -2,7 +2,7 @@
 
 SwiftyCoreData is a lightweight libliary written in Swift. Main purpose is to make using CoreData easier without necessary template code code. This libliary uses power of Swift Generics and Protocols. 
 ## Advantages
-* Thread Safety
+* Thread Safe
 * Immutable 
 * No shared state
 * No template code
