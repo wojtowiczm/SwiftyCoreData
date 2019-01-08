@@ -13,20 +13,16 @@ class CatsViewModel {
     
     var catsChanged: (([Cat]) -> Void)?
     
-    private let dbController = SCDController<Cat, CatEntity>(with: PersistanceService.shared.persistanceContainer, operatingQueue: .main)
+    private let catsDataBaseWorker = SCDWorker<Cat, CatEntity>(persistanceService: PersistanceService.shared)
     
     func loadCats() {
-        dbController.fetchAll { [weak self] in
-            self?.catsChanged?($0)
+        catsDataBaseWorker.fetchAllObjects { [weak self] in
+            self?.catsChanged?($0 ?? [])
         }
     }
     
-    func deleteCats() {
-        dbController.deleteAll()
-    }
-    
     func deleteCat(with id: NSManagedObjectID) {
-        dbController.deleteObject(withId: id)
+        catsDataBaseWorker.deleteObject(withID: id)
     }
     
     func restoreCats() {
@@ -35,9 +31,8 @@ class CatsViewModel {
             Cat(name: "Bruno", weight: 1.2, age: 1, managedObjectID: nil),
             Cat(name: "Figaro", weight: 3.1, age: 2, managedObjectID: nil)
         ]
-        dbController.deleteAll()
-        dbController.save(objects: cats)
-        loadCats()
+        catsDataBaseWorker.deleteObjects()
+        catsDataBaseWorker.save(objects: cats)
     }
 }
 

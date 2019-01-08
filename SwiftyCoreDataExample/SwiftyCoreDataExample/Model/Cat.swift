@@ -19,7 +19,7 @@ public struct Cat {
 
 extension Cat: SCDManagedObjectConvertible {
     
-    public func put(in context: NSManagedObjectContext) {
+    public func putManagedObject(in context: NSManagedObjectContext) {
         let catEntity = CatEntity(context: context)
         catEntity.name = self.name
         catEntity.weight = weight
