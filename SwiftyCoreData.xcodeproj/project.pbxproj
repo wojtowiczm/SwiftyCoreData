@@ -11,6 +11,7 @@
 		FF4B4B2D21CB8E7600CECDB8 /* SCDController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4B4B2C21CB8E7600CECDB8 /* SCDController.swift */; };
 		FF4B4B3021CB933800CECDB8 /* SCDManagedObjectConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4B4B2F21CB933800CECDB8 /* SCDManagedObjectConvertible.swift */; };
 		FF4B4B3421CB938500CECDB8 /* SCDObjectConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4B4B3321CB938500CECDB8 /* SCDObjectConvertible.swift */; };
+		FFB2BB9A21E493BE000922DF /* SCDOperatingQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB2BB9921E493BE000922DF /* SCDOperatingQueue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		FF4B4B2C21CB8E7600CECDB8 /* SCDController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCDController.swift; sourceTree = "<group>"; };
 		FF4B4B2F21CB933800CECDB8 /* SCDManagedObjectConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCDManagedObjectConvertible.swift; sourceTree = "<group>"; };
 		FF4B4B3321CB938500CECDB8 /* SCDObjectConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCDObjectConvertible.swift; sourceTree = "<group>"; };
+		FFB2BB9921E493BE000922DF /* SCDOperatingQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCDOperatingQueue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				FF4B4B2C21CB8E7600CECDB8 /* SCDController.swift */,
 				FF4B4B2F21CB933800CECDB8 /* SCDManagedObjectConvertible.swift */,
 				FF4B4B3321CB938500CECDB8 /* SCDObjectConvertible.swift */,
+				FFB2BB9921E493BE000922DF /* SCDOperatingQueue.swift */,
 			);
 			path = SwiftyCoreData;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 				FF4B4B2D21CB8E7600CECDB8 /* SCDController.swift in Sources */,
 				FF4B4B3021CB933800CECDB8 /* SCDManagedObjectConvertible.swift in Sources */,
 				FF4B4B3421CB938500CECDB8 /* SCDObjectConvertible.swift in Sources */,
+				FFB2BB9A21E493BE000922DF /* SCDOperatingQueue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

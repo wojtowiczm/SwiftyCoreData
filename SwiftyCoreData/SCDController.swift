@@ -15,9 +15,9 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible, 
     
     private var currentContext: NSManagedObjectContext!
     
-    public init(with container: NSPersistentContainer, qos: DispatchQoS = .background) {
+    public init(with container: NSPersistentContainer, operatingQueue: SCDOperatingQueue = .background) {
         self.persistentContainer = container
-        self.currentContext = provideContext(for: qos)
+        self.currentContext = provideContext(for: operatingQueue)
     }
     
     public func fetchAll(withPredicate predicate: NSPredicate? = nil, completion: @escaping (([Object]?) -> Void)) {
@@ -90,10 +90,11 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible, 
 
 extension SCDController {
     
-    private func provideContext(for qos: DispatchQoS) -> NSManagedObjectContext {
-        
-        // TODO
-        return persistentContainer.newBackgroundContext()
+    private func provideContext(for operatingQueue: SCDOperatingQueue) -> NSManagedObjectContext {
+        switch operatingQueue {
+        case .main: return persistentContainer.viewContext
+        case .background: return persistentContainer.newBackgroundContext()
+        }
     }
     
     private func saveContext() {
