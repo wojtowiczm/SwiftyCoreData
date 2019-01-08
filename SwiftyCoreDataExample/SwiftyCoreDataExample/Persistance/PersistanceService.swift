@@ -9,7 +9,7 @@
 import CoreData
 import SwiftyCoreData
 
-class PersistanceService: SCDPersistanceService {
+class PersistanceService {
     
     private init() {}
     
