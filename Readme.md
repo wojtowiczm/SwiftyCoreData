@@ -2,9 +2,9 @@
 
 SwiftyCoreData is a lightweight libliary written in Swift. General purpose is to make using CoreData easier without unnecessary template code
 
-## Installation
+## Installation (Alpha)
 
-SwiftyCoreData is currently avaliable on CocoaPods for beta testers. Just type for now:
+SwiftyCoreData is currently avaliable on CocoaPods for alpha testers. Just type for now:
 
 ```bash
 pod 'SwiftyCoreData', :git => 'https://github.com/wojtowiczm/SwiftyCoreData.git', :branch => 'develop'
@@ -14,55 +14,63 @@ in your podfile
 
 ## Usage
 After implementing all steps showed below our logic code will look like this:
+
 ```swift
 
 import SwiftyCoreData
 
 class ViewModel {
+// Create SCDController with given ObjectType and ManagedObjectType and NSPersistentContainer
+let dbController = SCDController<Object, ManagedObject>(with: persistanceContainer)
 
-    let dbController = SCDController<Cat, CatEntity>(with: persistanceContainer)
-
-    func loadCache() {
-        dbController
-    }
+func loadCache() {
+dbController.fetchAll {
+// Do stuff with your fetched objects (Cats)
+}
+}
 }
 ```
+You can use variuos operation at DataBase like:
+``
 
-## Step by step
-First of all create your .xcdatamodeld with proper ManagedObjects and generate ManagedObject subclass in your code. You can use default code generator provided by xCode. (Editor > Create NSManagedObjectSubclass...)*
+## Guide
+
+The trick is to understand two protocols ```SCDObjectConvertible``` and ```SCDManagedObjectConvertible```. Both of them are needed to use SwiftyCoreData. 
+
+In ```SCDObjectConvertible``` we implement mapping from CoreData Object to Swift Object used inside app.Same story for ```SCDManagedObjectConvertible``` here we provide mapping from Swift Object to CoreData Object
+
+Let's taka look at example. I will use Cat example cuz everyone loves those little bastards ;)
+
+We have ```CatManagedObject``` for caching purpose and ```Cat``` used inside our program.
 
 ```swift
 import CoreData
 import SwiftyCoreData
 
-@objc(CatEntity)
-public class CatEntity: NSManagedObject {
+@objc(CatManagedObject)
+public class CatManagedObject: NSManagedObject {
 
-    @NSManaged public var name: String?
-    @NSManaged public var weight: Double
-    @NSManaged public var age: Int16
+@NSManaged public var name: String?
+@NSManaged public var weight: Double
+@NSManaged public var age: Int16
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<CatEntity> {
-        return NSFetchRequest<CatEntity>(entityName: "CatEntity")
-    }
-
+@nonobjc public class func fetchRequest() -> NSFetchRequest<CatEntity> {
+return NSFetchRequest<CatManagedObject>(entityName: "CatManagedObject")
 }
-```
-Next our ManagedObject should conform to: ```SCDObjectConvertible```.
+}
 
-```swift
+/* Conform to SCDObjectConvertible */
+extension CatManagedObject: SCDObjectConvertible {
 
-extension CatEntity: SCDObjectConvertible {
+// Associate type of Object we will be converting to
+public typealias Object = Cat
 
-    // Associate type of Object we will be converting to
-    public typealias Object = Cat
+// Implement mapping algortihm between our ManagedObject and Object
+public func toObject() -> Cat? {
+guard let name = name else { return nil }
 
-    // Implement mapping algortihm between our ManagedObject and Object
-    public func toObject() -> Cat? {
-        guard let name = name else { return nil }
-
-        return Cat(name: name, weight: weight, age: Int(age), managedObjectID: objectID)
-    }
+return Cat(name: name, weight: weight, age: Int(age), managedObjectID: objectID)
+}
 }
 ```
 Next our Model has to conform to: ```SCDManagedObjectConvertible```
@@ -71,55 +79,40 @@ Next our Model has to conform to: ```SCDManagedObjectConvertible```
 import CoreData
 import SwiftyCoreData
 
+// Note: Our model has to be public since SwiftyCoreData need information about it
 public struct Cat {
 
-    let name: String
-    let weight: Double
-    let age: Int
+let name: String
+let weight: Double
+let age: Int
 
-    // It's good idea to store NSManagedObjectID for later purpose
-    var managedObjectID: NSManagedObjectID?
+// Note: It's good idea to store NSManagedObjectID for later purpose
+var managedObjectID: NSManagedObjectID?
 }
 
+/* Conform to SCDManagedObjectConvertible */
 extension Cat: SCDManagedObjectConvertible {
 
-    // Here implement algorith for putting our object in data base context
-    public func put(in context: NSManagedObjectContext) {
-        let catEntity = CatEntity(context: context)
-        catEntity.name = self.name
-        catEntity.weight = weight
-        catEntity.age = Int16(age)
-    }
+// Here implement algorith for putting our object in data base context
+// We need it for saving etc.
+public func put(in context: NSManagedObjectContext) {
+let catEntity = CatEntity(context: context)
+catEntity.name = self.name
+catEntity.weight = weight
+catEntity.age = Int16(age)
+}
 }
 
 ```
 
-Finally create Service that conform to ```SCDPersistanceService```. We need here to provide proper ```NSPersistentContainer```
+## Multitreading
+SwiftyCoreData is multithread friendly, just define operating queue using 
 
-```swift
-import CoreData
-import SwiftyCoreData
+```SCDOperatingQueue``` (posible values: ```.main```, ```.background```) 
 
-class PersistanceService: SCDPersistanceService {
+in controller contructor like this:
 
-    private init() {}
-
-    static var shared: PersistanceService {
-        return PersistanceService()
-    }
-
-    var persistanceContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "SwiftyCoreDataExample")
-        container.loadPersistentStores { storeDescription, error in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        }
-        return container
-    }()
-
-}
-```
+```SCDController<Obejct, ManagedObject>(with: persistantContainer, operatingQueue: .main)```
 
 ## Contributing
 Pull requests and comments are welcome.
