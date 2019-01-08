@@ -13,10 +13,10 @@ class CatsViewModel {
     
     var catsChanged: (([Cat]) -> Void)?
     
-    private let catsDataBaseWorker = SCDController<Cat, CatEntity>(with: PersistanceService.shared.persistanceContainer)
+    private let dbController = SCDController<Cat, CatEntity>(with: PersistanceService.shared.persistanceContainer, operatingQueue: .background)
     
     func loadCats() {
-        catsDataBaseWorker.fetchAll { [weak self] in
+        dbController.fetchAll { [weak self] in
             self?.catsChanged?($0 ?? [])
         }
     }
