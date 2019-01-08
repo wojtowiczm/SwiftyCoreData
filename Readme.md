@@ -26,14 +26,14 @@ import SwiftyCoreData
 
 class ViewModel {
 
-// Create SCDController with given ObjectType and ManagedObjectType and NSPersistentContainer
-let dbController = SCDController<Object, ManagedObject>(with: persistanceContainer)
+    // Create SCDController with given ObjectType and ManagedObjectType and NSPersistentContainer
+    let dbController = SCDController<Object, ManagedObject>(with: persistanceContainer)
 
-func loadCache() {
-dbController.fetchAll {
-// Do stuff with your fetched objects (Cats)
-}
-}
+    func loadCache() {
+        dbController.fetchAll {
+            // Do stuff with your fetched objects (Cats)
+        }
+    }
 }
 ```
 You can use variuos operation at DataBase like: 
@@ -51,7 +51,7 @@ The trick is to understanding two protocols ```SCDObjectConvertible``` and ```SC
 
 In ```SCDObjectConvertible``` we implement mapping from CoreData Object to Swift Object used inside app. Same story with ```SCDManagedObjectConvertible``` here we provide mapping from Swift Object to CoreData Object.
 
-Let's take a look at example below. I will use Cat example because everyone loves those little bastards ;)
+Let's take a look at example. I will use Cat example because everyone loves those little bastards ;)
 
 We have ```CatManagedObject``` for caching purpose and ```Cat``` used inside our program.
 
