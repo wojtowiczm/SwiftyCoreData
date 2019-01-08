@@ -2,9 +2,11 @@
 Pod::Spec.new do |s|
 
   s.name         = "SwiftyCoreData"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "Lightweight wrapper for old fashioned CoreData framework"
   s.description  = "TBD"
+  
+  s.swift_version = "4.2"
 
   s.homepage     = "https://github.com/wojtowiczm"
 
