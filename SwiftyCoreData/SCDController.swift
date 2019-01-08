@@ -20,7 +20,7 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
         self.currentContext = provideContext(for: operatingQueue)
     }
     
-    public func fetchAll(withPredicate predicate: NSPredicate? = nil, completion: @escaping (([Object]) -> Void)) {
+    public func fetchAll(withPredicate predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, completion: @escaping (([Object]) -> Void)) {
         currentContext.perform {
             guard let fetchRequest = ManagedObject.fetchRequest() as? NSFetchRequest<ManagedObject> else {
                 self.printError(message: "Couldn't not perform fetchRequest for \(ManagedObject.classForCoder())")
@@ -28,6 +28,7 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
                 return
             }
             fetchRequest.predicate = predicate
+            fetchRequest.sortDescriptors = sortDescriptors
             do {
                 let managedObjects = try self.currentContext.fetch(fetchRequest)
                 completion(managedObjects.compactMap { $0.toObject() as? Object})
