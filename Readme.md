@@ -1,33 +1,39 @@
 # SwiftyCoreData
 
-SwiftyCoreData is a lightweight libliary written in Swift. General purpose is to make using CoreData easier without unnecessary template code
+SwiftyCoreData is a lightweight libliary written in Swift. Main purpose is to make using CoreData easier without necessary template code code. This libliary uses power of Swift Generics and Protocols. 
+## Advantages
+* Thread Safety
+* Immutable 
+* No shared state
+* No template code
 
 ## Installation (Alpha)
 
-SwiftyCoreData is currently avaliable on CocoaPods for alpha testers. Just type in your podfile:
+SwiftyCoreData is currently avaliable on CocoaPods for alpha tests. Just type in your podfile:
 
 ```bash
+
 pod 'SwiftyCoreData', :git => 'https://github.com/wojtowiczm/SwiftyCoreData.git', :branch => 'develop'
 
 ```
 
 
 ## Usage
-After implementing all steps showed below our logic code will look like this:
+After implementing all steps presented in guide our logic code will look like this:
 
 ```swift
-
 import SwiftyCoreData
 
 class ViewModel {
-    // Create SCDController with given ObjectType and ManagedObjectType and NSPersistentContainer
-    let dbController = SCDController<Object, ManagedObject>(with: persistanceContainer)
 
-    func loadCache() {
-        dbController.fetchAll {
-        // Do stuff with your fetched objects (Cats)
-        }
-    }
+// Create SCDController with given ObjectType and ManagedObjectType and NSPersistentContainer
+let dbController = SCDController<Object, ManagedObject>(with: persistanceContainer)
+
+func loadCache() {
+dbController.fetchAll {
+// Do stuff with your fetched objects (Cats)
+}
+}
 }
 ```
 You can use variuos operation at DataBase like: 
@@ -41,11 +47,11 @@ Note: For full reference visit: [SCDController](https://github.com/wojtowiczm/Sw
 
 ## Guide
 
-The trick is to understand two protocols ```SCDObjectConvertible``` and ```SCDManagedObjectConvertible```. Both of them are needed to use SwiftyCoreData. 
+The trick is to understanding two protocols ```SCDObjectConvertible``` and ```SCDManagedObjectConvertible```. Both of them are needed to use SwiftyCoreData. 
 
-In ```SCDObjectConvertible``` we implement mapping from CoreData Object to Swift Object used inside app.Same story for ```SCDManagedObjectConvertible``` here we provide mapping from Swift Object to CoreData Object
+In ```SCDObjectConvertible``` we implement mapping from CoreData Object to Swift Object used inside app. Same story with ```SCDManagedObjectConvertible``` here we provide mapping from Swift Object to CoreData Object.
 
-Let's taka look at example. I will use Cat example cuz everyone loves those little bastards ;)
+Let's take a look at example. I will use Cat example because everyone loves those little bastards ;)
 
 We have ```CatManagedObject``` for caching purpose and ```Cat``` used inside our program.
 
@@ -125,3 +131,6 @@ Pull requests and comments are welcome.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
+
+## References
+Mostly inspired by [Better CoreData with generics ](https://swifting.io/blog/2016/11/27/28-better-coredata-with-swift-generics/)
