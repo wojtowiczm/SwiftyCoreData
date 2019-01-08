@@ -9,35 +9,100 @@
 import CoreData
 import SwiftyCoreData
 
+enum BenchmarkOperationType {
+    case load
+    case delete
+    case save
+    
+    var localizedName: String {
+        switch self {
+        case .load: return "Load"
+        case .delete: return "Delete"
+        case .save: return "Save"
+        }
+    }
+}
+
 class CatsViewModel {
     
-    var catsChanged: (([Cat]) -> Void)?
+    var catsUpdated: (([Cat]) -> Void)!
+    
+    var benchmarkTimeUpdated: ((Double, BenchmarkOperationType) -> Void)!
     
     private let dbController = SCDController<Cat, CatEntity>(with: PersistanceService.shared.persistanceContainer, operatingQueue: .main)
     
     func loadCats() {
-        dbController.fetchAll { [weak self] in
-            self?.catsChanged?($0)
+        let startTime = CFAbsoluteTimeGetCurrent()
+        dbController.fetchAll { [unowned self] in
+            self.benchmarkTimeUpdated(CFAbsoluteTimeGetCurrent() - startTime, .load)
+            self.catsUpdated($0)
         }
     }
     
     func deleteCats() {
-        dbController.deleteAll()
+        let startTime = CFAbsoluteTimeGetCurrent()
+        dbController.batchDelete()
+        benchmarkTimeUpdated(CFAbsoluteTimeGetCurrent() - startTime, .delete)
     }
     
-    func deleteCat(with id: NSManagedObjectID) {
-        dbController.deleteObject(withId: id)
-    }
-    
-    func restoreCats() {
+    func saveCats() {
         let cats = [
+            Cat(name: "Wilfredo", weight: 2.4, age: 3, managedObjectID: nil),
+            Cat(name: "Bruno", weight: 1.2, age: 1, managedObjectID: nil),
+            Cat(name: "Figaro", weight: 3.1, age: 2, managedObjectID: nil),
+            Cat(name: "Wilfredo", weight: 2.4, age: 3, managedObjectID: nil),
+            Cat(name: "Bruno", weight: 1.2, age: 1, managedObjectID: nil),
+            Cat(name: "Figaro", weight: 3.1, age: 2, managedObjectID: nil),
+            Cat(name: "Wilfredo", weight: 2.4, age: 3, managedObjectID: nil),
+            Cat(name: "Bruno", weight: 1.2, age: 1, managedObjectID: nil),
+            Cat(name: "Figaro", weight: 3.1, age: 2, managedObjectID: nil),
+            Cat(name: "Wilfredo", weight: 2.4, age: 3, managedObjectID: nil),
+            Cat(name: "Bruno", weight: 1.2, age: 1, managedObjectID: nil),
+            Cat(name: "Figaro", weight: 3.1, age: 2, managedObjectID: nil),
+            Cat(name: "Wilfredo", weight: 2.4, age: 3, managedObjectID: nil),
+            Cat(name: "Bruno", weight: 1.2, age: 1, managedObjectID: nil),
+            Cat(name: "Figaro", weight: 3.1, age: 2, managedObjectID: nil),
+            Cat(name: "Wilfredo", weight: 2.4, age: 3, managedObjectID: nil),
+            Cat(name: "Bruno", weight: 1.2, age: 1, managedObjectID: nil),
+            Cat(name: "Figaro", weight: 3.1, age: 2, managedObjectID: nil),
+            Cat(name: "Wilfredo", weight: 2.4, age: 3, managedObjectID: nil),
+            Cat(name: "Bruno", weight: 1.2, age: 1, managedObjectID: nil),
+            Cat(name: "Figaro", weight: 3.1, age: 2, managedObjectID: nil),
+            Cat(name: "Wilfredo", weight: 2.4, age: 3, managedObjectID: nil),
+            Cat(name: "Bruno", weight: 1.2, age: 1, managedObjectID: nil),
+            Cat(name: "Figaro", weight: 3.1, age: 2, managedObjectID: nil),
+            Cat(name: "Wilfredo", weight: 2.4, age: 3, managedObjectID: nil),
+            Cat(name: "Bruno", weight: 1.2, age: 1, managedObjectID: nil),
+            Cat(name: "Figaro", weight: 3.1, age: 2, managedObjectID: nil),
+            Cat(name: "Wilfredo", weight: 2.4, age: 3, managedObjectID: nil),
+            Cat(name: "Bruno", weight: 1.2, age: 1, managedObjectID: nil),
+            Cat(name: "Figaro", weight: 3.1, age: 2, managedObjectID: nil),
+            Cat(name: "Wilfredo", weight: 2.4, age: 3, managedObjectID: nil),
+            Cat(name: "Bruno", weight: 1.2, age: 1, managedObjectID: nil),
+            Cat(name: "Figaro", weight: 3.1, age: 2, managedObjectID: nil),
+            Cat(name: "Wilfredo", weight: 2.4, age: 3, managedObjectID: nil),
+            Cat(name: "Bruno", weight: 1.2, age: 1, managedObjectID: nil),
+            Cat(name: "Figaro", weight: 3.1, age: 2, managedObjectID: nil),
+            Cat(name: "Wilfredo", weight: 2.4, age: 3, managedObjectID: nil),
+            Cat(name: "Bruno", weight: 1.2, age: 1, managedObjectID: nil),
+            Cat(name: "Figaro", weight: 3.1, age: 2, managedObjectID: nil),
+            Cat(name: "Wilfredo", weight: 2.4, age: 3, managedObjectID: nil),
+            Cat(name: "Bruno", weight: 1.2, age: 1, managedObjectID: nil),
+            Cat(name: "Figaro", weight: 3.1, age: 2, managedObjectID: nil),
+            Cat(name: "Wilfredo", weight: 2.4, age: 3, managedObjectID: nil),
+            Cat(name: "Bruno", weight: 1.2, age: 1, managedObjectID: nil),
+            Cat(name: "Figaro", weight: 3.1, age: 2, managedObjectID: nil),
+            Cat(name: "Wilfredo", weight: 2.4, age: 3, managedObjectID: nil),
+            Cat(name: "Bruno", weight: 1.2, age: 1, managedObjectID: nil),
+            Cat(name: "Figaro", weight: 3.1, age: 2, managedObjectID: nil),
             Cat(name: "Wilfredo", weight: 2.4, age: 3, managedObjectID: nil),
             Cat(name: "Bruno", weight: 1.2, age: 1, managedObjectID: nil),
             Cat(name: "Figaro", weight: 3.1, age: 2, managedObjectID: nil)
         ]
-        dbController.deleteAll()
+        let startTime = CFAbsoluteTimeGetCurrent()
         dbController.save(objects: cats)
-        loadCats()
+        benchmarkTimeUpdated(CFAbsoluteTimeGetCurrent() - startTime, .save)
     }
+
 }
 

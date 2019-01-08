@@ -12,17 +12,17 @@ class CatsViewBuilder {
     
     let parentView: UIView
     
-    lazy var reloadButton: UIButton = {
+    lazy var loadButton: UIButton = {
         let button = UIButton().layoutable()
         return button
     }()
     
-    lazy var clearButton: UIButton = {
+    lazy var saveButton: UIButton = {
         let button = UIButton().layoutable()
         return button
     }()
     
-    lazy var addButton: UIButton = {
+    lazy var deleteButton: UIButton = {
         let button = UIButton().layoutable()
         return button
     }()
@@ -41,6 +41,11 @@ class CatsViewBuilder {
         return tableView
     }()
     
+    lazy var benchmarkLabel: UILabel = {
+        let label = UILabel().layoutable()
+        return label
+    }()
+    
     init(with parentView: UIView) {
         self.parentView = parentView
     }
@@ -52,14 +57,14 @@ class CatsViewBuilder {
     }
     
     private func setupProperties() {
-        clearButton.setTitle("CLEAR", for: .normal)
-        reloadButton.setTitle("RELOAD", for: .normal)
-        addButton.setTitle("ADD", for: .normal)
+        loadButton.setTitle("LOAD", for: .normal)
+        saveButton.setTitle("SAVE", for: .normal)
+        deleteButton.setTitle("DELETE", for: .normal)
     }
     
     private func setupHierarchy() {
-        [clearButton, reloadButton, addButton].forEach { buttonsStackView.addArrangedSubview($0) }
-        [buttonsStackView, tableView].forEach { parentView.addSubview($0) }
+        [loadButton, saveButton, deleteButton].forEach { buttonsStackView.addArrangedSubview($0) }
+        [buttonsStackView, tableView, benchmarkLabel].forEach { parentView.addSubview($0) }
     }
     
     private func setupConstraints() {
@@ -70,6 +75,10 @@ class CatsViewBuilder {
         tableView.topAnchor.equalTo(buttonsStackView.bottomAnchor)
         tableView.leadingAnchor.equalTo(parentView.leadingAnchor)
         tableView.trailingAnchor.equalTo(parentView.trailingAnchor)
-        tableView.bottomAnchor.equalTo(parentView.bottomAnchor)
+        tableView.bottomAnchor.equalTo(benchmarkLabel.topAnchor)
+        
+        benchmarkLabel.leadingAnchor.equalTo(parentView.leadingAnchor)
+        benchmarkLabel.trailingAnchor.equalTo(parentView.trailingAnchor)
+        benchmarkLabel.bottomAnchor.equalTo(parentView.bottomAnchor)
     }
 }

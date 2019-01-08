@@ -19,40 +19,41 @@ class CatsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindViewModel()
+        bindUI()
         view.backgroundColor = .red
         viewBuilder.build()
-        viewModel.loadCats()
-        bindUI()
-        bindViewModel()
     }
     
     private func bindUI() {
         viewBuilder.tableView.delegate = tableController
         viewBuilder.tableView.dataSource = tableController
-        viewBuilder.addButton.addTarget(self, action: #selector(addButtonTapped(_:)), for: .touchUpInside)
-        viewBuilder.clearButton.addTarget(self, action: #selector(clearButtonTapped(_:)), for: .touchUpInside)
-        viewBuilder.reloadButton.addTarget(self, action: #selector(reloadButtonTapped(_:)), for: .touchUpInside)
+        viewBuilder.loadButton.addTarget(self, action: #selector(loadButtonTapped(_:)), for: .touchUpInside)
+        viewBuilder.saveButton.addTarget(self, action: #selector(saveButtonTapped(_:)), for: .touchUpInside)
+        viewBuilder.deleteButton.addTarget(self, action: #selector(deleteButtonTapped(_:)), for: .touchUpInside)
     }
     
     private func bindViewModel() {
-        viewModel.catsChanged = { [weak self] cats in
+        viewModel.catsUpdated = { [weak self] cats in
             self?.tableController.cats = cats
             self?.viewBuilder.tableView.reloadData()
         }
-    }
-    
-    @objc func addButtonTapped(_ sender: UIButton) {
         
+        viewModel.benchmarkTimeUpdated = { [weak self] time, operation in
+            self?.viewBuilder.benchmarkLabel.text = "Benchmark time: \(String(format: "%.3f", time * 1000))ms operation: \(operation.localizedName)"
+        }
     }
     
-    @objc func clearButtonTapped(_ sender: UIButton) {
+    @objc func loadButtonTapped(_ sender: UIButton) {
+        viewModel.loadCats()
+    }
+    
+    @objc func saveButtonTapped(_ sender: UIButton) {
+        viewModel.saveCats()
+    }
+    
+    @objc func deleteButtonTapped(_ sender: UIButton) {
         viewModel.deleteCats()
-        viewModel.loadCats()
-    }
-    
-    @objc func reloadButtonTapped(_ sender: UIButton) {
-        viewModel.restoreCats()
-        viewModel.loadCats()
     }
    
 }
