@@ -27,6 +27,7 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
                 completion([])
                 return
             }
+            fetchRequest.predicate = predicate
             do {
                 let managedObjects = try self.currentContext.fetch(fetchRequest)
                 completion(managedObjects.compactMap { $0.toObject() as? Object})
@@ -37,22 +38,25 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
         }
     }
     
-    public func fetch(withId id: NSManagedObjectID, completion: ((Object?) -> Void)) {
+    public func fetch(withId id: NSManagedObjectID, completion: @escaping ((Object?) -> Void)) {
+        currentContext.perform {
             do {
-                guard let result = try currentContext.existingObject(with: id) as? ManagedObject else {
-                    printError(message: "NSManagedObject is not SCDObjectConvertible")
+                guard let result = try self.currentContext.existingObject(with: id) as? ManagedObject else {
+                    self.printError(message: "NSManagedObject is not SCDObjectConvertible")
                     completion(nil)
                     return
                 }
                 completion(result.toObject() as? Object)
             } catch {
-                printError(message: error.localizedDescription)
+                self.printError(message: error.localizedDescription)
                 completion(nil)
             }
+        }
     }
     
-    public func deleteAll() {
+    public func deleteAll(withPredicate predicate: NSPredicate? = nil) {
         guard let fetchRequest: NSFetchRequest<ManagedObject> = ManagedObject.fetchRequest() as? NSFetchRequest<ManagedObject> else { return }
+        fetchRequest.predicate = predicate
         do {
             let objects = try currentContext.fetch(fetchRequest)
             objects.forEach { currentContext.delete($0) }
@@ -112,9 +116,9 @@ extension SCDController {
     
     private func printError(message: String) {
         print("""
-        *** SwiftyCoreData error:
+            *** SwiftyCoreData error:
             message: \(message)"
-        ***
-        """)
+            ***
+            """)
     }
 }
