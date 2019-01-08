@@ -43,7 +43,7 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
         currentContext.perform {
             do {
                 guard let result = try self.currentContext.existingObject(with: id) as? ManagedObject else {
-                    self.printError(message: "NSManagedObject is not SCDObjectConvertible")
+                    self.printError(message: "Fetched NSManagedObject is not SCDObjectConvertible")
                     completion(nil)
                     return
                 }
@@ -74,12 +74,11 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
     }
     
     public func deleteAll(withPredicate predicate: NSPredicate? = nil) {
-        guard let fetchRequest: NSFetchRequest<ManagedObject> = ManagedObject.fetchRequest() as? NSFetchRequest<ManagedObject> else { return }
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = ManagedObject.fetchRequest()
         fetchRequest.predicate = predicate
+        let batchDelete = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         do {
-            let objects = try currentContext.fetch(fetchRequest)
-            objects.forEach { currentContext.delete($0) }
-            saveContext()
+            try self.currentContext.execute(batchDelete)
         } catch {
             printError(message: error.localizedDescription)
         }
@@ -105,7 +104,7 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
         saveContext()
     }
     
-    public func update(withId id: NSManagedObjectID, to newObject: Object) {
+    public func replace(objectWithId id: NSManagedObjectID, to newObject: Object) {
         deleteObject(withId: id)
         save(object: newObject)
     }
