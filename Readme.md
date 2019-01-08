@@ -4,13 +4,13 @@ SwiftyCoreData is a lightweight libliary written in Swift. General purpose is to
 
 ## Installation (Alpha)
 
-SwiftyCoreData is currently avaliable on CocoaPods for alpha testers. Just type for now:
+SwiftyCoreData is currently avaliable on CocoaPods for alpha testers. Just type in your podfile:
 
 ```bash
 pod 'SwiftyCoreData', :git => 'https://github.com/wojtowiczm/SwiftyCoreData.git', :branch => 'develop'
 
 ```
-in your podfile
+
 
 ## Usage
 After implementing all steps showed below our logic code will look like this:
@@ -20,14 +20,14 @@ After implementing all steps showed below our logic code will look like this:
 import SwiftyCoreData
 
 class ViewModel {
-// Create SCDController with given ObjectType and ManagedObjectType and NSPersistentContainer
-let dbController = SCDController<Object, ManagedObject>(with: persistanceContainer)
+    // Create SCDController with given ObjectType and ManagedObjectType and NSPersistentContainer
+    let dbController = SCDController<Object, ManagedObject>(with: persistanceContainer)
 
-func loadCache() {
-dbController.fetchAll {
-// Do stuff with your fetched objects (Cats)
-}
-}
+    func loadCache() {
+        dbController.fetchAll {
+        // Do stuff with your fetched objects (Cats)
+        }
+    }
 }
 ```
 You can use variuos operation at DataBase like: 
@@ -56,27 +56,27 @@ import SwiftyCoreData
 @objc(CatManagedObject)
 public class CatManagedObject: NSManagedObject {
 
-@NSManaged public var name: String?
-@NSManaged public var weight: Double
-@NSManaged public var age: Int16
+    @NSManaged public var name: String?
+    @NSManaged public var weight: Double
+    @NSManaged public var age: Int16
 
-@nonobjc public class func fetchRequest() -> NSFetchRequest<CatEntity> {
-return NSFetchRequest<CatManagedObject>(entityName: "CatManagedObject")
-}
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<CatEntity> {
+        return NSFetchRequest<CatManagedObject>(entityName: "CatManagedObject")
+    }
 }
 
 /* Conform to SCDObjectConvertible */
 extension CatManagedObject: SCDObjectConvertible {
 
-// Associate type of Object we will be converting to
-public typealias Object = Cat
+    // Associate type of Object we will be converting to
+    public typealias Object = Cat
 
-// Implement mapping algortihm between our ManagedObject and Object
-public func toObject() -> Cat? {
-guard let name = name else { return nil }
+    // Implement mapping algortihm between our ManagedObject and Object
+    public func toObject() -> Cat? {
+        guard let name = name else { return nil }
 
-return Cat(name: name, weight: weight, age: Int(age), managedObjectID: objectID)
-}
+        return Cat(name: name, weight: weight, age: Int(age), managedObjectID: objectID)
+    }
 }
 ```
 Next our Model has to conform to: ```SCDManagedObjectConvertible```
@@ -88,25 +88,25 @@ import SwiftyCoreData
 // Note: Our model has to be public since SwiftyCoreData need information about it
 public struct Cat {
 
-let name: String
-let weight: Double
-let age: Int
+    let name: String
+    let weight: Double
+    let age: Int
 
-// Note: It's good idea to store NSManagedObjectID for later purpose
-var managedObjectID: NSManagedObjectID?
+    // Note: It's good idea to store NSManagedObjectID for later purpose
+    var managedObjectID: NSManagedObjectID?
 }
 
 /* Conform to SCDManagedObjectConvertible */
 extension Cat: SCDManagedObjectConvertible {
 
-// Here implement algorith for putting our object in data base context
-// We need it for saving etc.
-public func put(in context: NSManagedObjectContext) {
-let catEntity = CatEntity(context: context)
-catEntity.name = self.name
-catEntity.weight = weight
-catEntity.age = Int16(age)
-}
+    // Here implement algorith for putting our object in data base context
+    // We need it for saving etc.
+    public func put(in context: NSManagedObjectContext) {
+        let catEntity = CatEntity(context: context)
+        catEntity.name = self.name
+        catEntity.weight = weight
+        catEntity.age = Int16(age)
+    }
 }
 
 ```

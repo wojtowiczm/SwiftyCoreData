@@ -23,7 +23,7 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
     public func fetchAll(withPredicate predicate: NSPredicate? = nil, completion: @escaping (([Object]) -> Void)) {
         currentContext.perform {
             guard let fetchRequest = ManagedObject.fetchRequest() as? NSFetchRequest<ManagedObject> else {
-                self.printError(message: "Coudn't not perform fetchRequest for \(ManagedObject.classForCoder())")
+                self.printError(message: "Couldn't not perform fetchRequest for \(ManagedObject.classForCoder())")
                 completion([])
                 return
             }
@@ -90,7 +90,6 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
         deleteObject(withId: id)
         save(object: newObject)
     }
-    
 }
 
 // MARK: - Helper methods
