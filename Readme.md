@@ -30,8 +30,14 @@ dbController.fetchAll {
 }
 }
 ```
-You can use variuos operation at DataBase like:
-``
+You can use variuos operation at DataBase like: 
+
+* Loading
+* Saving
+* Deleting
+* Updating
+
+Note: For full reference visit: [SCDController](https://github.com/wojtowiczm/SwiftyCoreData/blob/master/SwiftyCoreData/SCDController.swift)
 
 ## Guide
 
