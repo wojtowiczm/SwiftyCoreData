@@ -121,8 +121,8 @@ extension Cat: SCDManagedObjectConvertible {
 Average times of particular operations:
 * Read (for 100 000 objects)
 ```
-SwiftyCoreData average read time: 28.958888337163643 ms
-CoreData average read time: 47.83709568552452 ms
+SwiftyCoreData average read time: 28.786418461563564 ms
+CoreData average read time: 43.380704256567626 ms
 ```
 * Write (for 1000 objects)
 ```
