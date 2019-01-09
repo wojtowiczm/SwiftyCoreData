@@ -15,7 +15,7 @@ class CatsViewModel {
     
     var benchmarkTimeUpdated: ((Double, BenchmarkOperation) -> Void)!
     
-    private let dbController = SCDController<Cat, CatEntity>(with: PersistanceService.shared.persistanceContainer, operatingQueue: .background)
+    private let dbController = SCDController<Cat, CatEntity>(with: PersistanceService.shared.persistanceContainer, operatingQueue: .main)
     
     func loadCats() {
         let startTime = CFAbsoluteTimeGetCurrent()
