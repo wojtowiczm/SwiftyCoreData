@@ -1,8 +1,9 @@
+Lib version: 0.1
 ***
 Reading operation for dataSet with 10000 elements
  Thread: Main
 
- Example Object: Cat(name: "Figaro", weight: 3.1, age: 2, managedObjectID: nil)
+ Example Object: Cat(name: "Figaro", weight: 3.1, age: 2)
  Number of iterations: 100
 
  Tested on iPhone SE iOS: 12.1.2
