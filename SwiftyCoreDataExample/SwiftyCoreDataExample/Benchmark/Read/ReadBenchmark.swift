@@ -54,30 +54,24 @@ class ReadBenchmark: Benchmark {
     // According apple docs
     // see: https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreData/FetchingObjects.html#//apple_ref/doc/uid/TP40001075-CH6-SW1
     func operateOldWay() {
-        let startTime = CFAbsoluteTimeGetCurrent()
         let moc = PersistanceService.shared.persistanceContainer.viewContext
+        let startTime = CFAbsoluteTimeGetCurrent()
         let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "CatEntity")
-        do {
-            let fetchedCats = try moc.fetch(fetch) as! [CatEntity]
-            
-            let cats = fetchedCats.compactMap {
-                Cat(name: $0.name! , weight: $0.weight, age: Int($0.age), managedObjectID: $0.objectID)
-            }
-            
-            let time = CFAbsoluteTimeGetCurrent() - startTime
-            let timeInMs = time * 1000
-            print("Framework: CoreData Operation: \(BenchmarkOperation.read.localizedName) Time in ms: \(timeInMs) number of objects: \(cats.count)")
-            self.oldWayTimes.append(timeInMs)
-            self.i += 1
-            if self.i > self.numberOfOperations {
-                print("***/n End of reading with pure CoreData /n")
-                self.finalize()
-                return
-            }
-            self.operateOldWay()
-        } catch {
-            //fatalError("Failed to fetch employees: \(error)")
+        let fetchedCats = try? moc.fetch(fetch) as! [CatEntity]
+        let cats = fetchedCats?.compactMap {
+            Cat(name: $0.name! , weight: $0.weight, age: Int($0.age), managedObjectID: nil)
+        } ?? []
+        let time = CFAbsoluteTimeGetCurrent() - startTime
+        let timeInMs = time * 1000
+        print("Framework: CoreData Operation: \(BenchmarkOperation.read.localizedName) Time in ms: \(timeInMs) number of objects: \(cats.count)")
+        self.oldWayTimes.append(timeInMs)
+        self.i += 1
+        if self.i > self.numberOfOperations {
+            print("***/n End of reading with pure CoreData /n")
+            self.finalize()
+            return
         }
+        self.operateOldWay()
     }
     
     func finalize() {

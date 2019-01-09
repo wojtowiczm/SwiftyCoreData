@@ -28,7 +28,7 @@
 		FFB2BBA821E4FF73000922DF /* DataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB2BBA721E4FF73000922DF /* DataSet.swift */; };
 		FFB2BBAA21E50048000922DF /* BenchmarkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB2BBA921E50048000922DF /* BenchmarkOperation.swift */; };
 		FFE80C2521E633E9000A8546 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE80C2421E633E9000A8546 /* UIDevice.swift */; };
-		FFE80C2C21E6471A000A8546 /* ReadBenchmarkMainThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE80C2B21E6471A000A8546 /* ReadBenchmarkMainThread.swift */; };
+		FFE80C2C21E6471A000A8546 /* ReadBenchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE80C2B21E6471A000A8546 /* ReadBenchmark.swift */; };
 		FFE8FBA021D7A85500B1019C /* CatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE8FB9F21D7A85500B1019C /* CatsTableViewCell.swift */; };
 		FFE8FBA221D7A98A00B1019C /* CatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE8FBA121D7A98A00B1019C /* CatsTableViewController.swift */; };
 		FFE8FBA421D7E68A00B1019C /* NSLayoutAnchor.Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE8FBA321D7E68A00B1019C /* NSLayoutAnchor.Extension.swift */; };
@@ -70,7 +70,7 @@
 		FFB2BBA721E4FF73000922DF /* DataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSet.swift; sourceTree = "<group>"; };
 		FFB2BBA921E50048000922DF /* BenchmarkOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenchmarkOperation.swift; sourceTree = "<group>"; };
 		FFE80C2421E633E9000A8546 /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
-		FFE80C2B21E6471A000A8546 /* ReadBenchmarkMainThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadBenchmarkMainThread.swift; sourceTree = "<group>"; };
+		FFE80C2B21E6471A000A8546 /* ReadBenchmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadBenchmark.swift; sourceTree = "<group>"; };
 		FFE8FB9F21D7A85500B1019C /* CatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsTableViewCell.swift; sourceTree = "<group>"; };
 		FFE8FBA121D7A98A00B1019C /* CatsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsTableViewController.swift; sourceTree = "<group>"; };
 		FFE8FBA321D7E68A00B1019C /* NSLayoutAnchor.Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutAnchor.Extension.swift; sourceTree = "<group>"; };
@@ -202,7 +202,7 @@
 		FFE80C2821E646E8000A8546 /* Read */ = {
 			isa = PBXGroup;
 			children = (
-				FFE80C2B21E6471A000A8546 /* ReadBenchmarkMainThread.swift */,
+				FFE80C2B21E6471A000A8546 /* ReadBenchmark.swift */,
 			);
 			path = Read;
 			sourceTree = "<group>";
@@ -306,7 +306,7 @@
 				FF87CE0C21E5FF0D00E82CE7 /* Benchmark.swift in Sources */,
 				FF87CE1021E61B6A00E82CE7 /* WriteBenchmark.swift in Sources */,
 				FFB2BBAA21E50048000922DF /* BenchmarkOperation.swift in Sources */,
-				FFE80C2C21E6471A000A8546 /* ReadBenchmarkMainThread.swift in Sources */,
+				FFE80C2C21E6471A000A8546 /* ReadBenchmark.swift in Sources */,
 				FFE8FBA021D7A85500B1019C /* CatsTableViewCell.swift in Sources */,
 				FF4B4B8521CBA46600CECDB8 /* SwiftyCoreDataExample.xcdatamodeld in Sources */,
 				FF4B4B7D21CBA46600CECDB8 /* AppDelegate.swift in Sources */,
