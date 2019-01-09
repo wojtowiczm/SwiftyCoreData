@@ -11,13 +11,13 @@ import Foundation
 enum BenchmarkOperation {
     case read
     case delete
-    case save
+    case write
     
     var localizedName: String {
         switch self {
         case .read: return "Read"
         case .delete: return "Delete"
-        case .save: return "Save"
+        case .write: return "Write"
         }
     }
 }

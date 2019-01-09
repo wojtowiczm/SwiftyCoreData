@@ -10,28 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftyCoreDataExample/SwiftyCoreDataExample/UI/Cats/CatsViewModel.swift"
-            timestampString = "568727596.184271"
+            timestampString = "568729186.350422"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
             endingLineNumber = "38"
             landmarkName = "loadOldWay()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SwiftyCoreData/SCDController.swift"
-            timestampString = "568727596.18435"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "fetchAll(withPredicate:sortDescriptors:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftyCoreData/SCDController.swift"
-            timestampString = "568727596.1844471"
+            timestampString = "568741550.269374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "deleteAll(withPredicate:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftyCoreDataExample/SwiftyCoreDataExample/UI/Cats/CatsViewModel.swift"
-            timestampString = "568727596.184532"
+            timestampString = "568729186.351643"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
@@ -106,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftyCoreDataExample/SwiftyCoreDataExample/UI/Cats/CatsViewModel.swift"
-            timestampString = "568727596.184594"
+            timestampString = "568729186.352329"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
@@ -122,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwiftyCoreDataExample/SwiftyCoreDataExample/UI/Cats/CatsViewModel.swift"
-            timestampString = "568727596.184654"
+            timestampString = "568729186.352959"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
@@ -137,13 +121,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SwiftyCoreDataExample/SwiftyCoreDataExample/Benchmark/Benchmark.swift"
-            timestampString = "568727596.184718"
+            filePath = "SwiftyCoreData/SCDController.swift"
+            timestampString = "568741550.269815"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "prepare()"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "fetchAll(withPredicate:sortDescriptors:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftyCoreData.SCDController.fetchAll(withPredicate: Swift.Optional&lt;__C.NSPredicate&gt;, sortDescriptors: Swift.Optional&lt;Swift.Array&lt;__C.NSSortDescriptor&gt;&gt;, completion: (Swift.Array&lt;A&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "SwiftyCoreData"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michalwojtowicz/Desktop/Research/SwiftyCoreData/SwiftyCoreData/SCDController.swift"
+                  timestampString = "568738791.273927"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "377">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in SwiftyCoreData.SCDController.fetchAll(withPredicate: Swift.Optional&lt;__C.NSPredicate&gt;, sortDescriptors: Swift.Optional&lt;Swift.Array&lt;__C.NSSortDescriptor&gt;&gt;, completion: (Swift.Array&lt;A&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "SwiftyCoreData"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michalwojtowicz/Desktop/Research/SwiftyCoreData/SwiftyCoreData/SCDController.swift"
+                  timestampString = "568738791.2787631"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "130">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftyCoreData/SCDController.swift"
+            timestampString = "568741550.269995"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "dispatch(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -153,13 +185,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SwiftyCoreDataExample/SwiftyCoreDataExample/Benchmark/Benchmark.swift"
-            timestampString = "568727596.184831"
+            filePath = "SwiftyCoreData/SCDController.swift"
+            timestampString = "568741550.270138"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "operate()"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "dispatch(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftyCoreData/SCDController.swift"
+            timestampString = "568741550.270264"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "dispatch(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

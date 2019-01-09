@@ -23,9 +23,17 @@ class DataSet {
   
     ]
     
-    static let oneHoundredThousandCats: [Cat] = {
+    static let readDataSet: [Cat] = {
         var toReturn: [[Cat]] = []
         for i in 0..<1000 {
+            toReturn.append(DataSet.base)
+        }
+        return toReturn.flatMap { $0 }
+    }()
+    
+    static let writeDataSet: [Cat] = {
+        var toReturn: [[Cat]] = []
+        for i in 0..<100 {
             toReturn.append(DataSet.base)
         }
         return toReturn.flatMap { $0 }

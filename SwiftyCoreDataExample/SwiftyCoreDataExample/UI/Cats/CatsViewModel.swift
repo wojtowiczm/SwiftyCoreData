@@ -52,7 +52,7 @@ class CatsViewModel {
     func saveCats() {
         let startTime = CFAbsoluteTimeGetCurrent()
         dbController.save(objects: DataSet.base)
-        benchmarkTimeUpdated(CFAbsoluteTimeGetCurrent() - startTime, .save)
+        benchmarkTimeUpdated(CFAbsoluteTimeGetCurrent() - startTime, .write)
     }
 
 }

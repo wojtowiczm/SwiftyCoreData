@@ -15,13 +15,18 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
     
     private var currentContext: NSManagedObjectContext!
     
+    private let operatingQueue: SCDOperatingQueue
+    
     public init(with container: NSPersistentContainer, operatingQueue: SCDOperatingQueue = .background) {
         self.persistentContainer = container
-        self.currentContext = provideContext(for: operatingQueue)
+        self.operatingQueue = operatingQueue
+        self.currentContext = provideContext()
     }
     
+    // MARK: - Read
+    
     public func fetchAll(withPredicate predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, completion: @escaping (([Object]) -> Void)) {
-        currentContext.perform {
+        dispatch {
             guard let fetchRequest = ManagedObject.fetchRequest() as? NSFetchRequest<ManagedObject> else {
                 self.printError(message: "Couldn't not perform fetchRequest for \(ManagedObject.classForCoder())")
                 completion([])
@@ -40,7 +45,7 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
     }
     
     public func fetch(withId id: NSManagedObjectID, completion: @escaping ((Object?) -> Void)) {
-        currentContext.perform {
+        dispatch {
             do {
                 guard let result = try self.currentContext.existingObject(with: id) as? ManagedObject else {
                     self.printError(message: "Fetched NSManagedObject is not SCDObjectConvertible")
@@ -56,7 +61,7 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
     }
     
     public func countAll(withPredicate predicate: NSPredicate? = nil, completion: @escaping (Int) -> Void) {
-        currentContext.perform {
+        dispatch {
             guard let fetchRequest = ManagedObject.fetchRequest() as? NSFetchRequest<ManagedObject> else {
                 self.printError(message: "Couldn't not perform fetchRequest for \(ManagedObject.classForCoder())")
                 completion(0)
@@ -73,36 +78,50 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
         }
     }
     
+    // MARK: - Write
+    
+    public func save(objects: [Object]) {
+        dispatch {
+            objects.forEach { $0.put(in: self.currentContext) }
+            self.saveContext()
+        }
+    }
+    
+    public func save(object: Object) {
+        dispatch {
+            object.put(in: self.currentContext)
+            self.saveContext()
+        }
+    }
+    
+    // MARK: -  Delete
+    
     public func deleteAll(withPredicate predicate: NSPredicate? = nil) {
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = ManagedObject.fetchRequest()
-        fetchRequest.predicate = predicate
-        let batchDelete = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        do {
-            try self.currentContext.execute(batchDelete)
-        } catch {
-            printError(message: error.localizedDescription)
+        dispatch {
+            let fetchRequest: NSFetchRequest<NSFetchRequestResult> = ManagedObject.fetchRequest()
+            fetchRequest.predicate = predicate
+            let batchDelete = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            do {
+                try self.currentContext.execute(batchDelete)
+            } catch {
+                self.printError(message: error.localizedDescription)
+            }
         }
     }
     
     public func deleteObject(withId id: NSManagedObjectID) {
-        do {
-            let object = try currentContext.existingObject(with: id)
-            currentContext.delete(object)
-            saveContext()
-        } catch {
-            printError(message: error.localizedDescription)
+        dispatch {
+            do {
+                let object = try self.currentContext.existingObject(with: id)
+                self.currentContext.delete(object)
+                self.saveContext()
+            } catch {
+                self.printError(message: error.localizedDescription)
+            }
         }
     }
     
-    public func save(objects: [Object]) {
-        objects.forEach { $0.put(in: currentContext) }
-        saveContext()
-    }
-    
-    public func save(object: Object) {
-        object.put(in: currentContext)
-        saveContext()
-    }
+    // MARK: - Update
     
     public func replace(objectWithId id: NSManagedObjectID, to newObject: Object) {
         deleteObject(withId: id)
@@ -110,11 +129,25 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
     }
 }
 
-// MARK: - Helper methods
+// MARK: - Queue Helpers
 
 extension SCDController {
     
-    private func provideContext(for operatingQueue: SCDOperatingQueue) -> NSManagedObjectContext {
+    // Benchmarks showed that using `perform` on Main Thread significally descreased performance
+    // I.E: From 20 ms to 40 ms
+    // But we need it while operating on background thread
+    private func dispatch(_ operation: @escaping () -> Void) {
+        switch operatingQueue {
+        case .main: operation()
+        case .background: return currentContext.perform(operation)
+        }
+    }
+}
+
+// MARK: - CoreData Helpers
+
+extension SCDController {
+    private func provideContext() -> NSManagedObjectContext {
         switch operatingQueue {
         case .main: return persistentContainer.viewContext
         case .background: return persistentContainer.newBackgroundContext()
@@ -130,7 +163,11 @@ extension SCDController {
             printError(message: error.localizedDescription)
         }
     }
-    
+}
+
+// MARK: - Error Logging
+
+extension SCDController {
     private func printError(message: String) {
         print("""
             *** SwiftyCoreData error:
