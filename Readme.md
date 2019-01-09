@@ -117,6 +117,15 @@ extension Cat: SCDManagedObjectConvertible {
 
 ```
 
+## Performance
+Average times of particular operations:
+* Read
+```
+SwiftyCoreData average read time: 41.49417121811668 ms
+CoreData average read time: 43.71617690171345 ms
+```
+For more details visit [Benchmark]()
+
 ## Multitreading
 SwiftyCoreData is multithread friendly, just define operating queue using 
 

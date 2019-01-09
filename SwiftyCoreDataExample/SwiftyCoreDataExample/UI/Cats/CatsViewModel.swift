@@ -15,12 +15,12 @@ class CatsViewModel {
     
     var benchmarkTimeUpdated: ((Double, BenchmarkOperation) -> Void)!
     
-    private let dbController = SCDController<Cat, CatEntity>(with: PersistanceService.shared.persistanceContainer, operatingQueue: .main)
+    private let dbController = SCDController<Cat, CatEntity>(with: PersistanceService.shared.persistanceContainer, operatingQueue: .background)
     
     func loadCats() {
         let startTime = CFAbsoluteTimeGetCurrent()
         dbController.fetchAll { [unowned self] in
-            self.benchmarkTimeUpdated(CFAbsoluteTimeGetCurrent() - startTime, .load)
+            self.benchmarkTimeUpdated(CFAbsoluteTimeGetCurrent() - startTime, .read)
             self.catsUpdated($0)
         }
     }
@@ -36,7 +36,7 @@ class CatsViewModel {
             let cats = fetchedCats.compactMap {
                 Cat(name: $0.name! , weight: $0.weight, age: Int($0.age), managedObjectID: $0.objectID)
             }
-            benchmarkTimeUpdated(CFAbsoluteTimeGetCurrent() - startTime, .load)
+            benchmarkTimeUpdated(CFAbsoluteTimeGetCurrent() - startTime, .read)
             catsUpdated(cats)
         } catch {
             fatalError("Failed to fetch employees: \(error)")
@@ -51,7 +51,7 @@ class CatsViewModel {
     
     func saveCats() {
         let startTime = CFAbsoluteTimeGetCurrent()
-        dbController.save(objects: DataSet.cats)
+        dbController.save(objects: DataSet.base)
         benchmarkTimeUpdated(CFAbsoluteTimeGetCurrent() - startTime, .save)
     }
 

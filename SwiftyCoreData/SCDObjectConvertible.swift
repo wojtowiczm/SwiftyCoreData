@@ -6,7 +6,7 @@
 //  Copyright © 2018 Michał Wójtowicz. All rights reserved.
 //
 
-import CoreData
+import Foundation
 
 public protocol SCDObjectConvertible {
     

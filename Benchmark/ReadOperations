@@ -1,0 +1,462 @@
+***
+Reading operation for dataSet with 10000 elements
+ Thread: Main
+
+ Example Object: Cat(name: String, weight: Double, age: Int64)
+ Number of iterations: 100
+
+ Tested on iPhone 7 iOS: 12
+
+***
+
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.24598407745361 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.88501834869385 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.29493236541748 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.67802429199219 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.27104377746582 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.03405570983887 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.480971336364746 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.685057640075684 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.35696792602539 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 39.64495658874512 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 39.883971214294434 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.101932525634766 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.043996810913086 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.88592529296875 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.351914405822754 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.66503047943115 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 43.37108135223389 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 45.385003089904785 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.13106632232666 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.88306427001953 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.777968406677246 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 44.00491714477539 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 44.190049171447754 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 43.56503486633301 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.07003116607666 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 43.402910232543945 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 44.21699047088623 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.35196113586426 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 44.1889762878418 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 44.42703723907471 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.0229434967041 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.878031730651855 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.59002208709717 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.30101203918457 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.20004177093506 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.168928146362305 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 43.833017349243164 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.23299026489258 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.48800468444824 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.5419340133667 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.7559871673584 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.60594940185547 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.9459342956543 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.4201021194458 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.57192802429199 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.85493087768555 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.203975677490234 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.240023612976074 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.20504856109619 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.43500328063965 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.84897041320801 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 44.07703876495361 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 48.58601093292236 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.94200038909912 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 43.10798645019531 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.4280891418457 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 43.43307018280029 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 44.66593265533447 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 45.25601863861084 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 43.493032455444336 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 43.38502883911133 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.057037353515625 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.519999504089355 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.8480167388916 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.22893714904785 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.517019271850586 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.09091854095459 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.65895080566406 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.59998893737793 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.3139591217041 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.3289794921875 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 39.21198844909668 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.00997543334961 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 39.63792324066162 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 39.62099552154541 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 39.392948150634766 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 39.57700729370117 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 39.523959159851074 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.4130220413208 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 39.53289985656738 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 39.538025856018066 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.142059326171875 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 39.672017097473145 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 39.721012115478516 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.381001472473145 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.625929832458496 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 39.50798511505127 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 39.89303112030029 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 39.58392143249512 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 39.71898555755615 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.23497009277344 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 39.99495506286621 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 39.79301452636719 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.15994071960449 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.37892818450928 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 39.842963218688965 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.03608226776123 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 39.71397876739502 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 44.62301731109619 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.871070861816406 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.199015617370605 number of objects: 10000
+***/n End of reading with SwiftyCoreData /n
+***
+ Old way reading using pure CoreData
+***
+
+Framework: CoreData Operation: Read Time in ms: 38.47193717956543 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 40.338993072509766 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 41.45395755767822 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 46.780943870544434 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 50.19795894622803 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 47.03497886657715 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 43.985962867736816 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 46.80204391479492 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 44.293999671936035 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 50.222039222717285 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 44.56496238708496 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 45.04406452178955 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 45.78399658203125 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 42.95504093170166 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 44.39902305603027 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 46.19491100311279 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 49.56400394439697 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 45.971035957336426 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 38.935065269470215 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 42.58394241333008 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 45.76694965362549 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 46.008944511413574 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 45.38094997406006 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 45.623064041137695 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 45.90201377868652 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 46.7219352722168 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 44.938087463378906 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 45.05801200866699 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 44.95692253112793 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 48.72596263885498 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 45.50600051879883 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 45.506954193115234 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 36.3999605178833 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 43.68400573730469 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 45.83299160003662 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 41.87488555908203 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 47.05202579498291 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 47.71709442138672 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 47.22297191619873 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 44.79706287384033 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 44.499993324279785 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 46.0660457611084 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 45.282959938049316 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 44.90005970001221 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 46.7679500579834 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 46.68092727661133 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 46.650052070617676 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 40.673017501831055 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 45.971035957336426 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 40.88103771209717 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 39.595961570739746 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 40.25101661682129 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 46.009063720703125 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 45.0129508972168 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 45.1890230178833 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 47.15597629547119 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 48.843979835510254 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 41.80002212524414 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 40.20893573760986 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 38.53797912597656 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 41.72396659851074 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 39.73495960235596 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 48.16102981567383 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 39.80100154876709 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 41.07999801635742 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 40.72391986846924 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 38.17403316497803 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 40.516018867492676 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 42.1140193939209 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 50.81295967102051 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 47.193050384521484 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 47.7830171585083 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 44.296979904174805 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 44.43800449371338 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 47.773003578186035 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 47.23501205444336 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 47.715067863464355 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 43.17498207092285 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 35.954952239990234 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 36.08500957489014 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 36.49294376373291 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 38.62297534942627 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 38.14804553985596 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 39.76905345916748 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 38.50507736206055 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 38.50197792053223 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 40.086984634399414 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 36.54897212982178 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 41.94998741149902 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 45.83108425140381 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 41.80097579956055 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 41.41998291015625 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 42.0459508895874 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 37.06800937652588 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 36.33999824523926 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 43.77901554107666 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 48.821091651916504 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 47.73104190826416 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 51.95200443267822 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 42.443037033081055 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 41.75102710723877 number of objects: 10000
+***/n End of reading with pure CoreData /n
+
+Finalized benchmark
+SwiftyCoreData average read time: 41.49417121811668
+CoreData average read time: 43.71617690171345
+
+***//BACKGROUND THREAD //***
+
+***
+Reading operation for dataSet with 10000 elements
+ Thread: Background
+
+ Example Object: Cat(name: "Figaro", weight: 3.1, age: 2, managedObjectID: nil)
+ Number of iterations: 100
+
+ Tested on iPhone 7 iOS: 12
+
+***
+
+Framework: SwiftyCoreData Operation: Read Time in ms: 48.03800582885742 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 43.97702217102051 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.76597499847412 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 43.136000633239746 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.77296161651611 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 43.3429479598999 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.56904125213623 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.79303550720215 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 43.74110698699951 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 43.62905025482178 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.373061180114746 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 43.12098026275635 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 43.04003715515137 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.7630672454834 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.870951652526855 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.155099868774414 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.30904579162598 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.69309139251709 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.368961334228516 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.91596603393555 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.38898849487305 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.057037353515625 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.827035903930664 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.697025299072266 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.00692272186279 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.65804386138916 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.07789897918701 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.44895076751709 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.16504096984863 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.17000102996826 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.1370267868042 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.82808303833008 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.98801517486572 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.964935302734375 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.65804386138916 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.917038917541504 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.590094566345215 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.43202304840088 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.22702980041504 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.6179895401001 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.863990783691406 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.42498970031738 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.85903072357178 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.37098789215088 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.03100299835205 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.6489839553833 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.98789596557617 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.27693176269531 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.43404960632324 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.259050369262695 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.92001914978027 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.05596446990967 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.49603843688965 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.65291786193848 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.08297824859619 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.128920555114746 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 43.31505298614502 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 43.41995716094971 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 44.05999183654785 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 46.28801345825195 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 45.03297805786133 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.65995121002197 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 43.64502429962158 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 43.35296154022217 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 43.81096363067627 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 44.520020484924316 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 43.4190034866333 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.49691963195801 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 44.15297508239746 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.77200794219971 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.30399227142334 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.69003868103027 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.727972984313965 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.42205619812012 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.36192798614502 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.05699062347412 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.20004177093506 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.059017181396484 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.9769287109375 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.925025939941406 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.65005683898926 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 44.349074363708496 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.00799560546875 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.2219762802124 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 43.13802719116211 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.67008399963379 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.27705097198486 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 40.73894023895264 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.626023292541504 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.32699966430664 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.41998291015625 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.51201248168945 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.1909818649292 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.923927307128906 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.941927909851074 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.12589359283447 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.014909744262695 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.4050817489624 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.82302951812744 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 42.091965675354004 number of objects: 10000
+Framework: SwiftyCoreData Operation: Read Time in ms: 41.59903526306152 number of objects: 10000
+***/n End of reading with SwiftyCoreData /n
+***
+ Old way reading using pure CoreData
+***
+Framework: CoreData Operation: Read Time in ms: 37.45698928833008 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 42.21689701080322 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 39.62302207946777 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 39.40403461456299 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 40.640950202941895 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 43.68901252746582 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 39.58892822265625 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 42.31297969818115 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 45.18401622772217 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 40.56894779205322 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 38.262009620666504 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 41.26107692718506 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 39.07191753387451 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 47.14798927307129 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 47.49703407287598 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 38.035035133361816 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 37.716031074523926 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 43.97594928741455 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 44.30508613586426 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 42.9610013961792 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 47.363996505737305 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 45.210957527160645 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 41.75901412963867 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 44.11506652832031 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 46.69499397277832 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 44.52705383300781 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 45.817017555236816 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 54.000020027160645 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 41.13197326660156 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 47.30105400085449 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 44.84295845031738 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 41.15903377532959 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 43.284058570861816 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 41.80502891540527 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 48.892974853515625 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 39.0549898147583 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 47.158002853393555 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 40.902018547058105 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 42.33288764953613 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 46.640992164611816 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 45.73690891265869 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 39.86191749572754 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 39.21401500701904 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 38.478970527648926 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 45.58098316192627 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 41.13602638244629 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 41.98896884918213 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 42.35196113586426 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 49.45492744445801 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 46.31304740905762 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 51.254987716674805 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 48.251986503601074 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 44.40200328826904 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 50.87399482727051 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 43.4800386428833 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 43.46299171447754 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 51.02097988128662 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 39.92605209350586 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 48.91800880432129 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 41.52202606201172 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 50.346970558166504 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 40.83991050720215 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 44.010043144226074 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 45.29297351837158 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 37.50300407409668 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 47.05500602722168 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 44.72196102142334 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 41.90206527709961 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 39.800047874450684 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 40.61591625213623 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 40.11094570159912 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 39.27302360534668 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 45.26996612548828 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 39.517998695373535 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 41.43202304840088 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 45.063018798828125 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 44.08705234527588 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 53.779006004333496 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 42.70505905151367 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 38.91301155090332 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 41.81098937988281 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 39.193034172058105 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 44.082045555114746 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 45.93801498413086 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 42.75810718536377 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 46.18799686431885 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 45.99893093109131 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 42.32907295227051 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 35.80808639526367 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 42.69695281982422 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 44.273972511291504 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 48.927903175354004 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 40.4050350189209 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 38.935065269470215 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 45.76396942138672 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 49.818992614746094 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 46.28598690032959 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 52.385926246643066 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 46.81098461151123 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 40.49503803253174 number of objects: 10000
+Framework: CoreData Operation: Read Time in ms: 41.01204872131348 number of objects: 10000
+***/n End of reading with pure CoreData /n
+
+Finalized benchmark
+SwiftyCoreData average read time: 42.152981946964076
+CoreData average read time: 43.587138157079714
+
+CONCLUSION
+
+As you can see above SwiftyCoreData have no implact on performacne compared to pure Core dataSet
+
+Main Thread test results:
+
+  SwiftyCoreData average read time: 41.49417121811668
+  CoreData average read time: 43.71617690171345
+
+Background Thread test results:
+
+  SwiftyCoreData average read time: 42.152981946964076
+  CoreData average read time: 43.587138157079714

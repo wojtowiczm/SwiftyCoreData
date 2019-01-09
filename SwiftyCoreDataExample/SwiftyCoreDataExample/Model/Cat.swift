@@ -23,7 +23,7 @@ extension Cat: SCDManagedObjectConvertible {
         let catEntity = CatEntity(context: context)
         catEntity.name = self.name
         catEntity.weight = weight
-        catEntity.age = Int16(age)
+        catEntity.age = Int64(age)
     }
 }
 

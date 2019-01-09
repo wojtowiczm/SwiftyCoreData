@@ -18,6 +18,9 @@
 		FF4B4BAF21CBAE0100CECDB8 /* CatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4B4BAE21CBAE0100CECDB8 /* CatsViewModel.swift */; };
 		FF4B4BB121CBAE2200CECDB8 /* PersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4B4BB021CBAE2200CECDB8 /* PersistanceService.swift */; };
 		FF8572F921CBE6AB00676CBA /* CatsViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8572F821CBE6AB00676CBA /* CatsViewBuilder.swift */; };
+		FF87CE0A21E5FEE300E82CE7 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF87CE0921E5FEE300E82CE7 /* Logger.swift */; };
+		FF87CE0C21E5FF0D00E82CE7 /* Benchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF87CE0B21E5FF0D00E82CE7 /* Benchmark.swift */; };
+		FF87CE0E21E6045A00E82CE7 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF87CE0D21E6045A00E82CE7 /* ArrayExtension.swift */; };
 		FF9BCB3521CCF1D200DE0F4D /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9BCB3421CCF1D200DE0F4D /* UIViewExtension.swift */; };
 		FFB2BBA321E4FDB9000922DF /* SwiftyCoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB2BBA221E4FDB9000922DF /* SwiftyCoreData.framework */; };
 		FFB2BBA421E4FDBE000922DF /* SwiftyCoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB2BBA221E4FDB9000922DF /* SwiftyCoreData.framework */; };
@@ -57,6 +60,9 @@
 		FF4B4BAE21CBAE0100CECDB8 /* CatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsViewModel.swift; sourceTree = "<group>"; };
 		FF4B4BB021CBAE2200CECDB8 /* PersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceService.swift; sourceTree = "<group>"; };
 		FF8572F821CBE6AB00676CBA /* CatsViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsViewBuilder.swift; sourceTree = "<group>"; };
+		FF87CE0921E5FEE300E82CE7 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		FF87CE0B21E5FF0D00E82CE7 /* Benchmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Benchmark.swift; sourceTree = "<group>"; };
+		FF87CE0D21E6045A00E82CE7 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		FF9BCB3421CCF1D200DE0F4D /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		FFB2BBA221E4FDB9000922DF /* SwiftyCoreData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyCoreData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFB2BBA721E4FF73000922DF /* DataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSet.swift; sourceTree = "<group>"; };
@@ -163,6 +169,7 @@
 			children = (
 				FF9BCB3421CCF1D200DE0F4D /* UIViewExtension.swift */,
 				FFE8FBA321D7E68A00B1019C /* NSLayoutAnchor.Extension.swift */,
+				FF87CE0D21E6045A00E82CE7 /* ArrayExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -180,6 +187,8 @@
 			children = (
 				FFB2BBA721E4FF73000922DF /* DataSet.swift */,
 				FFB2BBA921E50048000922DF /* BenchmarkOperation.swift */,
+				FF87CE0921E5FEE300E82CE7 /* Logger.swift */,
+				FF87CE0B21E5FF0D00E82CE7 /* Benchmark.swift */,
 			);
 			path = Benchmark;
 			sourceTree = "<group>";
@@ -266,15 +275,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF4B4B7F21CBA46600CECDB8 /* CatsViewController.swift in Sources */,
+				FF87CE0E21E6045A00E82CE7 /* ArrayExtension.swift in Sources */,
 				FFE8FBA421D7E68A00B1019C /* NSLayoutAnchor.Extension.swift in Sources */,
 				FFB2BBA821E4FF73000922DF /* DataSet.swift in Sources */,
 				FF4B4BA321CBA82C00CECDB8 /* Cat.swift in Sources */,
 				FFE8FBA221D7A98A00B1019C /* CatsTableViewController.swift in Sources */,
+				FF87CE0C21E5FF0D00E82CE7 /* Benchmark.swift in Sources */,
 				FFB2BBAA21E50048000922DF /* BenchmarkOperation.swift in Sources */,
 				FFE8FBA021D7A85500B1019C /* CatsTableViewCell.swift in Sources */,
 				FF4B4B8521CBA46600CECDB8 /* SwiftyCoreDataExample.xcdatamodeld in Sources */,
 				FF4B4B7D21CBA46600CECDB8 /* AppDelegate.swift in Sources */,
 				FF4B4BAF21CBAE0100CECDB8 /* CatsViewModel.swift in Sources */,
+				FF87CE0A21E5FEE300E82CE7 /* Logger.swift in Sources */,
 				FF4B4BB121CBAE2200CECDB8 /* PersistanceService.swift in Sources */,
 				FF9BCB3521CCF1D200DE0F4D /* UIViewExtension.swift in Sources */,
 				FF8572F921CBE6AB00676CBA /* CatsViewBuilder.swift in Sources */,
