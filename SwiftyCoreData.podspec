@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "SwiftyCoreData"
-  s.version      = "0.2.0"
+  s.version      = "0.2.1"
   s.summary      = "Lightweight wrapper for old fashioned CoreData framework"
   s.description  = "SwiftyCoreData is a lightweight libliary written in Swift. General purpose is to make using CoreData easier without unnecessary template code"
   
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.author       = { "Michał Wójtowicz" => "wojtowiczmichal97@gmail.com" }
   s.platform     = :ios, "10.0"
 
-  s.source       = { :git => "https://github.com/wojtowiczm/SwiftyCoreData.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/wojtowiczm/SwiftyCoreData.git" }
 
 
   s.source_files  = "SwiftyCoreData/**/*.swift"
