@@ -19,11 +19,14 @@ public struct Cat {
 
 extension Cat: SCDManagedObjectConvertible {
     
-    public func put(in context: NSManagedObjectContext) {
+    public typealias ManagedObject = CatEntity
+    
+    public func put(in context: NSManagedObjectContext) -> CatEntity {
         let catEntity = CatEntity(context: context)
         catEntity.name = self.name
         catEntity.weight = weight
         catEntity.age = Int64(age)
+        return catEntity
     }
 }
 
