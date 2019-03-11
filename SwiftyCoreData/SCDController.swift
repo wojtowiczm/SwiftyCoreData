@@ -80,17 +80,19 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
     
     // MARK: - Write
     
-    public func save(objects: [Object]) {
+    public func save(objects: [Object], completion: @escaping () -> Void = {}) {
         dispatch {
             objects.forEach { $0.put(in: self.currentContext) }
             self.saveContext()
+            completion()
         }
     }
     
-    public func save(object: Object) {
+    public func save(object: Object, completion: @escaping () -> Void = {}) {
         dispatch {
             object.put(in: self.currentContext)
             self.saveContext()
+            completion()
         }
     }
     
