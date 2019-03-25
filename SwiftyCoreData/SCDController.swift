@@ -82,16 +82,20 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
     
     public func save(objects: [Object], completion: @escaping () -> Void = {}) {
         dispatch {
-            objects.forEach { $0.put(in: self.currentContext) }
-            self.saveContext()
+            objects.forEach {
+                let entity = $0.put(in: self.currentContext)
+                self.saveContext()
+                $0.obtainedObjectID(entity.objectID)
+            }
             completion()
         }
     }
     
     public func save(object: Object, completion: @escaping () -> Void = {}) {
         dispatch {
-            object.put(in: self.currentContext)
+            let entity = object.put(in: self.currentContext)
             self.saveContext()
+            object.obtainedObjectID(entity.objectID)
             completion()
         }
     }
@@ -125,9 +129,9 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
     
     // MARK: - Update
     
-    public func replace(objectWithId id: NSManagedObjectID, to newObject: Object) {
+    public func replace(objectWithId id: NSManagedObjectID, to newObject: Object, completion: @escaping () -> Void = {}) {
         deleteObject(withId: id)
-        save(object: newObject)
+        save(object: newObject, completion: completion)
     }
 }
 

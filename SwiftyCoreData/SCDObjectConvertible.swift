@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol SCDObjectConvertible {
+public protocol SCDObjectConvertible: class {
     
     associatedtype Object
     

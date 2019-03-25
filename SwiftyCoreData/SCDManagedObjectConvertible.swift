@@ -14,4 +14,6 @@ public protocol SCDManagedObjectConvertible {
     
     @discardableResult
     func put(in context: NSManagedObjectContext) -> ManagedObject
+    
+    func obtainedObjectID(_ id: NSManagedObjectID)
 }
