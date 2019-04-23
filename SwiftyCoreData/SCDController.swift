@@ -102,25 +102,27 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
     
     // MARK: -  Delete
     
-    public func deleteAll(withPredicate predicate: NSPredicate? = nil) {
+    public func deleteAll(withPredicate predicate: NSPredicate? = nil, completion: @escaping () -> Void = {}) {
         dispatch {
             let fetchRequest: NSFetchRequest<NSFetchRequestResult> = ManagedObject.fetchRequest()
             fetchRequest.predicate = predicate
             let batchDelete = NSBatchDeleteRequest(fetchRequest: fetchRequest)
             do {
                 try self.currentContext.execute(batchDelete)
+                completion()
             } catch {
                 self.printError(message: error.localizedDescription)
             }
         }
     }
     
-    public func deleteObject(withId id: NSManagedObjectID) {
+    public func deleteObject(withId id: NSManagedObjectID, completion: @escaping () -> Void = {}) {
         dispatch {
             do {
                 let object = try self.currentContext.existingObject(with: id)
                 self.currentContext.delete(object)
                 self.saveContext()
+                completion()
             } catch {
                 self.printError(message: error.localizedDescription)
             }
@@ -153,6 +155,7 @@ extension SCDController {
 // MARK: - CoreData Helpers
 
 extension SCDController {
+    
     private func provideContext() -> NSManagedObjectContext {
         switch operatingQueue {
         case .main: return persistentContainer.viewContext
@@ -174,6 +177,7 @@ extension SCDController {
 // MARK: - Error Logging
 
 extension SCDController {
+    
     private func printError(message: String) {
         print("""
             *** SwiftyCoreData error:
