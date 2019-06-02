@@ -8,6 +8,11 @@
 
 import Foundation
 
+/// OperatingQueue for DataBases operations
+///
+/// - Cases:
+///   - main: Main queue
+//    - backgroundQueue: BackgroundQueue
 public enum SCDOperatingQueue {
     case main
     case background

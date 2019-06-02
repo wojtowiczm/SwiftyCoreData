@@ -3,7 +3,7 @@
 //  SwiftyCoreData
 //
 //  Created by Michał Wójtowicz on 20/12/2018.
-//  Copyright © 2018 Michał Wójtowicz. All rights reserved.
+//  For license see LICENSE.txt
 //
 
 import CoreData
@@ -17,6 +17,11 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
     
     private let operatingQueue: SCDOperatingQueue
     
+    /// Init for SCDControler
+    ///
+    /// - Parameters:
+    ///   - with container: `NSPersistentContainer` for our models
+    //    - operatingQueue: OperatingQueue for DataBases operations
     public init(with container: NSPersistentContainer, operatingQueue: SCDOperatingQueue = .background) {
         self.persistentContainer = container
         self.operatingQueue = operatingQueue
@@ -25,61 +30,64 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
     
     // MARK: - Read
     
-    public func fetchAll(withPredicate predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, completion: @escaping (([Object]) -> Void)) {
+    /// Fetches objects stored in DataBase
+    ///
+    /// - Parameters:
+    ///   - withPredicate: `NSPredicate` - A definition of logical conditions used to constrain a search either for a fetch or for in-memory filtering.
+    //    - sortDescriptors: An immutable description of how to order a collection of objects based on a property common to all the objects.
+    ///   - completion: callback after operation is completed
+    public func fetchAll(
+        withPredicate predicate: NSPredicate? = nil,
+        sortDescriptors: [NSSortDescriptor]? = nil,
+        completion: @escaping (([Object]) -> Void)) {
         dispatch {
             guard let fetchRequest = ManagedObject.fetchRequest() as? NSFetchRequest<ManagedObject> else {
-                self.printError(message: "Couldn't not perform fetchRequest for \(ManagedObject.classForCoder())")
-                completion([])
-                return
+                throw SCDError("Couldn't not perform fetchRequest for \(ManagedObject.classForCoder())")
             }
             fetchRequest.predicate = predicate
             fetchRequest.sortDescriptors = sortDescriptors
-            do {
-                let managedObjects = try self.currentContext.fetch(fetchRequest)
-                completion(managedObjects.compactMap { $0.toObject() as? Object})
-            } catch {
-                completion([])
-                self.printError(message: error.localizedDescription)
-            }
+            let managedObjects = try self.currentContext.fetch(fetchRequest)
+            completion(managedObjects.compactMap { $0.toObject() as? Object})
         }
     }
     
-    public func fetch(withId id: NSManagedObjectID, completion: @escaping ((Object?) -> Void)) {
+    /// Fetches object stored in DataBase
+    ///
+    /// - Parameters:
+    ///   - withId: `NSManagedObjectID` of object that will be fetched
+    ///   - completion: callback after operation is completed
+    public func fetch(withId id: NSManagedObjectID, completion: @escaping ((Object) -> Void)) {
         dispatch {
-            do {
-                guard let result = try self.currentContext.existingObject(with: id) as? ManagedObject else {
-                    self.printError(message: "Fetched NSManagedObject is not SCDObjectConvertible")
-                    completion(nil)
-                    return
-                }
-                completion(result.toObject() as? Object)
-            } catch {
-                self.printError(message: error.localizedDescription)
-                completion(nil)
+            guard let result = try self.currentContext.existingObject(with: id) as? ManagedObject else {
+                throw SCDError("Fetched NSManagedObject is not SCDObjectConvertible")
             }
+            completion(result.toObject() as! Object)
         }
     }
     
+    /// Counts obejects stored in DataBase
+    ///
+    /// - Parameters:
+    ///   - withPredicate: `NSPredicate` - A definition of logical conditions used to constrain a search either for a fetch or for in-memory filtering.
+    ///   - completion: callback after operation is completed
     public func countAll(withPredicate predicate: NSPredicate? = nil, completion: @escaping (Int) -> Void) {
         dispatch {
             guard let fetchRequest = ManagedObject.fetchRequest() as? NSFetchRequest<ManagedObject> else {
-                self.printError(message: "Couldn't not perform fetchRequest for \(ManagedObject.classForCoder())")
-                completion(0)
-                return
+                throw SCDError("Couldn't not perform fetchRequest for \(ManagedObject.classForCoder())")
             }
             fetchRequest.predicate = predicate
-            do {
-                let objectsCount = try self.currentContext.count(for: fetchRequest)
-                completion(objectsCount)
-            } catch {
-                completion(0)
-                self.printError(message: error.localizedDescription)
-            }
+            let objectsCount = try self.currentContext.count(for: fetchRequest)
+            completion(objectsCount)
         }
     }
     
     // MARK: - Write
     
+    /// Saves objects to DataBase
+    ///
+    /// - Parameters:
+    ///   - objects: Collections of objects that will be saved in DataBase
+    ///   - completion: callback after operation is completed
     public func save(objects: [Object], completion: @escaping () -> Void = {}) {
         dispatch {
             objects.forEach {
@@ -91,6 +99,11 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
         }
     }
     
+    /// Saves obeject to DataBase
+    ///
+    /// - Parameters:
+    ///   - object: Object that will be saved in DataBase
+    ///   - completion: callback after operation is completed
     public func save(object: Object, completion: @escaping () -> Void = {}) {
         dispatch {
             let entity = object.put(in: self.currentContext)
@@ -102,35 +115,45 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
     
     // MARK: -  Delete
     
-    public func deleteAll(withPredicate predicate: NSPredicate? = nil, completion: @escaping () -> Void = {}) {
+    /// Deletes every object that matches exist in database
+    ///
+    /// - Parameters:
+    ///   - withPredicate: `NSPredicate` - A definition of logical conditions used to constrain a search either for a fetch or for in-memory filtering.
+    ///   - completion: callback after operation is completed
+    public func deleteAll(
+        withPredicate predicate: NSPredicate? = nil,
+        completion: @escaping () -> Void = {}) {
         dispatch {
             let fetchRequest: NSFetchRequest<NSFetchRequestResult> = ManagedObject.fetchRequest()
             fetchRequest.predicate = predicate
             let batchDelete = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-            do {
-                try self.currentContext.execute(batchDelete)
-                completion()
-            } catch {
-                self.printError(message: error.localizedDescription)
-            }
+            try self.currentContext.execute(batchDelete)
+            completion()
         }
     }
     
+    /// Deletes object that exist in database
+    ///
+    /// - Parameters:
+    ///   - withId: `NSManagedObjectID` of object that will be deleted
+    ///   - completion: callback after operation is completed
     public func deleteObject(withId id: NSManagedObjectID, completion: @escaping () -> Void = {}) {
         dispatch {
-            do {
-                let object = try self.currentContext.existingObject(with: id)
-                self.currentContext.delete(object)
-                self.saveContext()
-                completion()
-            } catch {
-                self.printError(message: error.localizedDescription)
-            }
+            let object = try self.currentContext.existingObject(with: id)
+            self.currentContext.delete(object)
+            self.saveContext()
+            completion()
         }
     }
     
     // MARK: - Update
     
+    /// Replaces existing object with new value
+    ///
+    /// - Parameters:
+    ///   - objectWithId: `NSManagedObjectID` of existing object
+    ///   - with: New object
+    ///   - completion: callback after operation is completed
     public func replace(objectWithId id: NSManagedObjectID, to newObject: Object, completion: @escaping () -> Void = {}) {
         deleteObject(withId: id)
         save(object: newObject, completion: completion)
@@ -144,10 +167,17 @@ extension SCDController {
     // Benchmarks showed that using `perform` on Main Thread significally descreased performance
     // I.E: From 20 ms to 40 ms
     // But we need it while operating on background thread
-    private func dispatch(_ operation: @escaping () -> Void) {
+    private func dispatch(_ operation: @escaping () throws -> Void) {
+        func throwable() {
+            do {
+                try operation()
+            } catch {
+                errorOccured(error)
+            }
+        }
         switch operatingQueue {
-        case .main: operation()
-        case .background: return currentContext.perform(operation)
+        case .main: throwable()
+        case .background: return currentContext.perform(throwable)
         }
     }
 }
@@ -169,7 +199,7 @@ extension SCDController {
         do {
             try currentContext.save()
         } catch {
-            printError(message: error.localizedDescription)
+            errorOccured(error)
         }
     }
 }
@@ -178,11 +208,16 @@ extension SCDController {
 
 extension SCDController {
     
-    private func printError(message: String) {
+    private func errorOccured(_ error: Error) {
+        if SCDConfig.shared.debugMode {
         print("""
-            *** SwiftyCoreData error:
-            message: \(message)"
-            ***
+            ********************
+            SwiftyCoreData error:\n
+            message: \(error.localizedDescription)"\n
+            ********************\n
             """)
+        } else {
+            fatalError(error.localizedDescription)
+        }
     }
 }
