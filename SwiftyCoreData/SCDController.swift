@@ -34,7 +34,7 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
     ///
     /// - Parameters:
     ///   - withPredicate: `NSPredicate` - A definition of logical conditions used to constrain a search either for a fetch or for in-memory filtering.
-    //    - sortDescriptors: An immutable description of how to order a collection of objects based on a property common to all the objects.
+    ///    - sortDescriptors: An immutable description of how to order a collection of objects based on a property common to all the objects.
     ///   - completion: callback after operation is completed
     public func fetchAll(
         withPredicate predicate: NSPredicate? = nil,
