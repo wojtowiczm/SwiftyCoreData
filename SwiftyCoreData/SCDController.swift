@@ -39,13 +39,17 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
     public func fetchAll(
         withPredicate predicate: NSPredicate? = nil,
         sortDescriptors: [NSSortDescriptor]? = nil,
-        completion: @escaping (([Object]) -> Void)) {
+        fetchLimit: Int? = nil,
+        completion: @escaping ([Object]) -> Void) {
         dispatch {
             guard let fetchRequest = ManagedObject.fetchRequest() as? NSFetchRequest<ManagedObject> else {
                 throw SCDError("Couldn't not perform fetchRequest for \(ManagedObject.classForCoder())")
             }
             fetchRequest.predicate = predicate
             fetchRequest.sortDescriptors = sortDescriptors
+            if let limit = fetchLimit {
+                fetchRequest.fetchLimit = limit
+            }
             let managedObjects = try self.currentContext.fetch(fetchRequest)
             completion(managedObjects.compactMap { $0.toObject() as? Object})
         }
@@ -63,6 +67,10 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
             }
             completion(result.toObject() as! Object)
         }
+    }
+    
+    public func fetchFirst(withPredicate predicate: NSPredicate? = nil, completion: @escaping (Object?) -> Void) {
+        fetchAll(withPredicate: predicate, fetchLimit: 1) { completion($0.first) }
     }
     
     /// Counts obejects stored in DataBase
@@ -93,7 +101,7 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
             objects.forEach {
                 let entity = $0.put(in: self.currentContext)
                 self.saveContext()
-                $0.obtainedObjectID(entity.objectID)
+                $0.managedObjectID = entity.objectID
             }
             completion()
         }
@@ -104,11 +112,11 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
     /// - Parameters:
     ///   - object: Object that will be saved in DataBase
     ///   - completion: callback after operation is completed
-    public func save(object: Object, completion: @escaping () -> Void = {}) {
+    public func save(_ object: Object, completion: @escaping () -> Void = {}) {
         dispatch {
             let entity = object.put(in: self.currentContext)
             self.saveContext()
-            object.obtainedObjectID(entity.objectID)
+            object.managedObjectID = entity.objectID
             completion()
         }
     }
@@ -135,11 +143,12 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
     /// Deletes object that exist in database
     ///
     /// - Parameters:
-    ///   - withId: `NSManagedObjectID` of object that will be deleted
+    ///   - object: instance that will be deleted
     ///   - completion: callback after operation is completed
-    public func deleteObject(withId id: NSManagedObjectID, completion: @escaping () -> Void = {}) {
+    public func delete(_ object: Object, completion: @escaping () -> Void = {}) {
+        guard let id = object.managedObjectID else { return }
         dispatch {
-            let object = try self.currentContext.existingObject(with: id)
+            guard let object = try? self.currentContext.existingObject(with: id) else { return }
             self.currentContext.delete(object)
             self.saveContext()
             completion()
@@ -151,12 +160,17 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
     /// Replaces existing object with new value
     ///
     /// - Parameters:
-    ///   - objectWithId: `NSManagedObjectID` of existing object
+    ///   - object: object to update
     ///   - with: New object
     ///   - completion: callback after operation is completed
-    public func replace(objectWithId id: NSManagedObjectID, to newObject: Object, completion: @escaping () -> Void = {}) {
-        deleteObject(withId: id)
-        save(object: newObject, completion: completion)
+    public func update(_ object: Object, to newObject: Object, completion: @escaping () -> Void = {}) {
+        delete(object)
+        save(newObject, completion: completion)
+    }
+    
+    public func update(_ object: Object, operation: (Object) -> Object, completion: @escaping () -> Void = {}) {
+        delete(object)
+        save(operation(object), completion: completion)
     }
 }
 

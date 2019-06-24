@@ -53,7 +53,7 @@ class CatsViewController: UIViewController {
     }
     
     @objc func deleteButtonTapped(_ sender: UIButton) {
-        viewModel.deleteCats()
+        viewModel.deleteCats(tableController.cats)
     }
    
 }

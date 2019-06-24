@@ -43,10 +43,12 @@ class CatsViewModel {
         }
     }
     
-    func deleteCats() {
+    func deleteCats(_ cats: [Cat]) {
         let startTime = CFAbsoluteTimeGetCurrent()
-        dbController.deleteAll()
-        benchmarkTimeUpdated(CFAbsoluteTimeGetCurrent() - startTime, .delete)
+        cats.forEach { dbController.delete($0, completion: {
+            self.benchmarkTimeUpdated(CFAbsoluteTimeGetCurrent() - startTime, .delete)
+        }) }
+        
     }
     
     func saveCats() {

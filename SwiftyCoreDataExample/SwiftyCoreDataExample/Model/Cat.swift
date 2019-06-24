@@ -14,7 +14,7 @@ public final class Cat {
     let weight: Double
     let age: Int
     
-    var managedObjectID: NSManagedObjectID?
+    public var managedObjectID: NSManagedObjectID?
     
     init(name: String, weight: Double, age: Int, managedObjectID: NSManagedObjectID? = nil) {
         self.name = name
@@ -25,11 +25,7 @@ public final class Cat {
 }
 
 extension Cat: SCDManagedObjectConvertible {
-    
-    public func obtainedObjectID(_ id: NSManagedObjectID) {
-        self.managedObjectID = id
-    }
-    
+
     public typealias ManagedObject = CatEntity
     
     public func put(in context: NSManagedObjectContext) -> CatEntity {

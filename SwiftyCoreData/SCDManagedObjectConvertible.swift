@@ -8,7 +8,11 @@
 
 import CoreData
 
-public protocol SCDManagedObjectConvertible {
+public protocol SCDManagedObjectConvertible: class {
+    
+    /// ID of paired ManagedObject
+    /// Neeeded for delete & update operation
+    var managedObjectID: NSManagedObjectID? { get set }
     
     /// Associated Type of DataBase Model
     associatedtype ManagedObject: NSManagedObject
@@ -19,9 +23,4 @@ public protocol SCDManagedObjectConvertible {
     /// - Returns: Object that will stored in DataBase
     @discardableResult
     func put(in context: NSManagedObjectContext) -> ManagedObject
-    
-    /// Callback method called when `NSManagedObjectID` is obtained or updated
-    /// In CoreData `NSManagedObjectID` is updated when it is saved/updated
-    /// - Parameter id: Fresh `NSManagedObjectID` for object
-    func obtainedObjectID(_ id: NSManagedObjectID)
 }
