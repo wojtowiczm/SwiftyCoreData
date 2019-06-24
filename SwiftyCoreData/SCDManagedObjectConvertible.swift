@@ -25,3 +25,7 @@ public protocol SCDManagedObjectConvertible {
     /// - Parameter id: Fresh `NSManagedObjectID` for object
     func obtainedObjectID(_ id: NSManagedObjectID)
 }
+
+extension SCDManagedObjectConvertible {
+    func obtainedObjectID(_ id: NSManagedObjectID) {}
+}

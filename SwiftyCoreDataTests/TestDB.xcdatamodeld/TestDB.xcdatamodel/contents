@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18F132" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="TestManagedObject" representedClassName="TestManagedObject" syncable="YES" codeGenerationType="class">
+        <attribute name="data" attributeType="Binary" syncable="YES"/>
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="double" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="int" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="string" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="TestManagedObject" positionX="-63" positionY="-18" width="128" height="120"/>
+    </elements>
+</model>
