@@ -15,6 +15,6 @@ public protocol SCDObjectConvertible: class {
     
     /// Method that implements mapping logic between `Object` and `NSManagedObject`
     ///
-    /// - Returns: Object that will be uses inside app
+    /// - Returns: Object that will be used inside app
     func toObject() -> Object?
 }

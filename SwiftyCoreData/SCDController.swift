@@ -47,11 +47,9 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
             }
             fetchRequest.predicate = predicate
             fetchRequest.sortDescriptors = sortDescriptors
-            if let limit = fetchLimit {
-                fetchRequest.fetchLimit = limit
-            }
+            if let limit = fetchLimit { fetchRequest.fetchLimit = limit }
             let managedObjects = try self.currentContext.fetch(fetchRequest)
-            completion(managedObjects.compactMap { $0.toObject() as? Object})
+            completion(managedObjects.compactMap { $0.toObject() as? Object })
         }
     }
     
@@ -161,16 +159,11 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
     ///
     /// - Parameters:
     ///   - object: object to update
-    ///   - with: New object
     ///   - completion: callback after operation is completed
-    public func update(_ object: Object, to newObject: Object, completion: @escaping () -> Void = {}) {
-        delete(object)
-        save(newObject, completion: completion)
-    }
-    
-    public func update(_ object: Object, operation: (Object) -> Object, completion: @escaping () -> Void = {}) {
-        delete(object)
-        save(operation(object), completion: completion)
+    public func update(_ object: Object, completion: @escaping () -> Void = {}) {
+        delete(object) {
+            self.save(object, completion: completion)
+        }
     }
 }
 
