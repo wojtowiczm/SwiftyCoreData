@@ -51,7 +51,7 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
                 fetchRequest.fetchLimit = limit
             }
             let managedObjects = try self.currentContext.fetch(fetchRequest)
-            completion(managedObjects.compactMap { $0.toObject() as? Object})
+            completion(managedObjects.compactMap(self.mapToObject))
         }
     }
     
@@ -62,10 +62,12 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
     ///   - completion: callback after operation is completed
     public func fetch(withId id: NSManagedObjectID, completion: @escaping ((Object) -> Void)) {
         dispatch {
-            guard let result = try self.currentContext.existingObject(with: id) as? ManagedObject else {
-                throw SCDError("Fetched NSManagedObject is not SCDObjectConvertible")
+            guard let result = try self.currentContext.existingObject(with: id) as? ManagedObject,
+                let object = self.mapToObject(result)
+                else {
+                    throw SCDError("Fetched NSManagedObject is not SCDObjectConvertible")
             }
-            completion(result.toObject() as! Object)
+            completion(object)
         }
     }
     
@@ -171,6 +173,17 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
     public func update(_ object: Object, operation: (Object) -> Object, completion: @escaping () -> Void = {}) {
         delete(object)
         save(operation(object), completion: completion)
+    }
+}
+
+// MARK: - Mapping helpers
+
+extension SCDController {
+    
+    private func mapToObject(_ managedObject: ManagedObject) -> Object? {
+        let object = managedObject.toObject() as? Object
+        object?.managedObjectID = managedObject.objectID
+        return object
     }
 }
 
