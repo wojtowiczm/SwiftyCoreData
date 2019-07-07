@@ -40,8 +40,9 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
         withPredicate predicate: NSPredicate? = nil,
         sortDescriptors: [NSSortDescriptor]? = nil,
         fetchLimit: Int? = nil,
+        failure: ((Error) -> Void)? = nil,
         completion: @escaping ([Object]) -> Void) {
-        dispatch {
+        dispatch(onError: failure) {
             guard let fetchRequest = ManagedObject.fetchRequest() as? NSFetchRequest<ManagedObject> else {
                 throw SCDError("Couldn't not perform fetchRequest for \(ManagedObject.classForCoder())")
             }
@@ -60,8 +61,11 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
     /// - Parameters:
     ///   - withId: `NSManagedObjectID` of object that will be fetched
     ///   - completion: callback after operation is completed
-    public func fetch(withId id: NSManagedObjectID, completion: @escaping ((Object) -> Void)) {
-        dispatch {
+    public func fetch(
+        withId id: NSManagedObjectID,
+        failure: ((Error) -> Void)? = nil,
+        completion: @escaping ((Object) -> Void)) {
+        dispatch(onError: failure) {
             guard let result = try self.currentContext.existingObject(with: id) as? ManagedObject,
                 let object = self.mapToObject(result)
                 else {
@@ -71,7 +75,10 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
         }
     }
     
-    public func fetchFirst(withPredicate predicate: NSPredicate? = nil, completion: @escaping (Object?) -> Void) {
+    public func fetchFirst(
+        withPredicate predicate: NSPredicate? = nil,
+        failure: ((Error) -> Void)? = nil,
+        completion: @escaping (Object?) -> Void) {
         fetchAll(withPredicate: predicate, fetchLimit: 1) { completion($0.first) }
     }
     
@@ -80,8 +87,11 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
     /// - Parameters:
     ///   - withPredicate: `NSPredicate` - A definition of logical conditions used to constrain a search either for a fetch or for in-memory filtering.
     ///   - completion: callback after operation is completed
-    public func countAll(withPredicate predicate: NSPredicate? = nil, completion: @escaping (Int) -> Void) {
-        dispatch {
+    public func countAll(
+        withPredicate predicate: NSPredicate? = nil,
+        failure: ((Error) -> Void)? = nil,
+        completion: @escaping (Int) -> Void) {
+        dispatch(onError: failure) {
             guard let fetchRequest = ManagedObject.fetchRequest() as? NSFetchRequest<ManagedObject> else {
                 throw SCDError("Couldn't not perform fetchRequest for \(ManagedObject.classForCoder())")
             }
@@ -98,11 +108,14 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
     /// - Parameters:
     ///   - objects: Collections of objects that will be saved in DataBase
     ///   - completion: callback after operation is completed
-    public func save(objects: [Object], completion: @escaping () -> Void = {}) {
-        dispatch {
-            objects.forEach {
+    public func save(
+        objects: [Object],
+        failure: ((Error) -> Void)? = nil,
+        completion: @escaping () -> Void = {}) {
+        dispatch(onError: failure) {
+            try objects.forEach {
                 let entity = $0.put(in: self.currentContext)
-                self.saveContext()
+                try self.saveContext()
                 $0.managedObjectID = entity.objectID
             }
             completion()
@@ -114,10 +127,13 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
     /// - Parameters:
     ///   - object: Object that will be saved in DataBase
     ///   - completion: callback after operation is completed
-    public func save(_ object: Object, completion: @escaping () -> Void = {}) {
-        dispatch {
+    public func save(
+        _ object: Object,
+        failure: ((Error) -> Void)? = nil,
+        completion: @escaping () -> Void = {}) {
+        dispatch(onError: failure) {
             let entity = object.put(in: self.currentContext)
-            self.saveContext()
+            try self.saveContext()
             object.managedObjectID = entity.objectID
             completion()
         }
@@ -132,8 +148,9 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
     ///   - completion: callback after operation is completed
     public func deleteAll(
         withPredicate predicate: NSPredicate? = nil,
+        failure: ((Error) -> Void)? = nil,
         completion: @escaping () -> Void = {}) {
-        dispatch {
+        dispatch(onError: failure) {
             let fetchRequest: NSFetchRequest<NSFetchRequestResult> = ManagedObject.fetchRequest()
             fetchRequest.predicate = predicate
             let batchDelete = NSBatchDeleteRequest(fetchRequest: fetchRequest)
@@ -147,12 +164,15 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
     /// - Parameters:
     ///   - object: instance that will be deleted
     ///   - completion: callback after operation is completed
-    public func delete(_ object: Object, completion: @escaping () -> Void = {}) {
+    public func delete(
+        _ object: Object,
+        failure: ((Error) -> Void)? = nil,
+        completion: @escaping () -> Void = {}) {
         guard let id = object.managedObjectID else { return }
-        dispatch {
+        dispatch(onError: failure) {
             guard let object = try? self.currentContext.existingObject(with: id) else { return }
             self.currentContext.delete(object)
-            self.saveContext()
+            try self.saveContext()
             completion()
         }
     }
@@ -165,14 +185,13 @@ where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible &
     ///   - object: object to update
     ///   - with: New object
     ///   - completion: callback after operation is completed
-    public func update(_ object: Object, to newObject: Object, completion: @escaping () -> Void = {}) {
-        delete(object)
-        save(newObject, completion: completion)
-    }
-    
-    public func update(_ object: Object, operation: (Object) -> Object, completion: @escaping () -> Void = {}) {
-        delete(object)
-        save(operation(object), completion: completion)
+    public func update(
+        _ object: Object,
+        failure: ((Error) -> Void)? = nil,
+        completion: @escaping () -> Void = {}) {
+        delete(object) {
+            self.save(object, completion: completion)
+        }
     }
 }
 
@@ -194,12 +213,12 @@ extension SCDController {
     // Benchmarks showed that using `perform` on Main Thread significally descreased performance
     // I.E: From 20 ms to 40 ms
     // But we need it while operating on background thread
-    private func dispatch(_ operation: @escaping () throws -> Void) {
+    private func dispatch(onError failure: ((Error) -> Void)? = nil, _ operation: @escaping () throws -> Void) {
         func throwable() {
             do {
                 try operation()
             } catch {
-                errorOccured(error)
+                failure?(error)
             }
         }
         switch operatingQueue {
@@ -220,31 +239,13 @@ extension SCDController {
         }
     }
     
-    private func saveContext() {
+    private func saveContext() throws {
         guard currentContext.hasChanges else { return }
         
         do {
             try currentContext.save()
         } catch {
-            errorOccured(error)
-        }
-    }
-}
-
-// MARK: - Error Logging
-
-extension SCDController {
-    
-    private func errorOccured(_ error: Error) {
-        if SCDConfig.shared.debugMode {
-        print("""
-            ********************
-            SwiftyCoreData error:\n
-            message: \(error.localizedDescription)"\n
-            ********************\n
-            """)
-        } else {
-            fatalError(error.localizedDescription)
+            throw error
         }
     }
 }
