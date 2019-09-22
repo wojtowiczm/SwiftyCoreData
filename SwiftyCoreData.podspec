@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "SwiftyCoreData"
-  s.version      = "0.4.1"
+  s.version      = "0.4.2"
   s.summary      = "Lightweight library for old fashioned CoreData framework"
   s.description  = "SwiftyCoreData is a lightweight libliary written in Swift. General purpose is to make using CoreData easier without unnecessary template code"
   

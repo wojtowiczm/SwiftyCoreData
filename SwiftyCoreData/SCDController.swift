@@ -211,6 +211,7 @@ extension SCDController {
         case .main: return persistentContainer.viewContext
         case .background: return persistentContainer.newBackgroundContext()
         }
+        assert(currentContext != nil, "Coudn't get context. \nPlease check your `NSPersistentContainer` configuration.")
     }
     
     private func saveContext() {
